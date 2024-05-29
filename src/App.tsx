@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path="/" element={<Main />} />
+          <Route path="" element={<Main />} />
         </Route>
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<CustomerLogin />} />
