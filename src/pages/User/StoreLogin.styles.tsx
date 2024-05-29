@@ -26,8 +26,8 @@ export const InputBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 180px;
   margin-bottom: 12px;
+  height: 100%;
 `;
 
 export const Button = styled.div`

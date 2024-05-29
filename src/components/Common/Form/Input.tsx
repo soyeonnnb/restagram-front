@@ -6,20 +6,31 @@ interface InputProps {
   name: string;
   setValue: any;
   disable?: boolean;
+  verifyText?: string;
 }
 
-const Input = ({ placeholder, type, name, setValue, disable }: InputProps) => {
+const Input = ({
+  placeholder,
+  type,
+  name,
+  setValue,
+  disable,
+  verifyText,
+}: InputProps) => {
   const handleInputChange = (event: any) => {
     setValue(event.target.value);
   };
 
   return (
-    <S.Input
-      placeholder={placeholder}
-      type={type ? type : "text"}
-      onChange={handleInputChange}
-      disabled={disable}
-    />
+    <S.Box>
+      <S.Input
+        placeholder={placeholder}
+        type={type ? type : "text"}
+        onChange={handleInputChange}
+        disabled={disable}
+      />
+      {verifyText !== "" && <S.VerifyText>{verifyText}</S.VerifyText>}
+    </S.Box>
   );
 };
 
