@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as S from "./index.styles";
@@ -13,7 +14,9 @@ root.render(
     <Reset />
     <S.Layout>
       <S.Box>
-        <App />
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
       </S.Box>
     </S.Layout>
   </React.StrictMode>

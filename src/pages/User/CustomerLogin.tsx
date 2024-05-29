@@ -7,14 +7,14 @@ function Login() {
   const navigate = useNavigate();
 
   const navigateToStoreLogin = () => {
-    navigate("/store-login");
+    navigate("/store/login");
   };
 
   return (
     <S.Layout>
       <S.LogoImage src={Logo} alt="로고 이미지" />
       <S.SocialLoginButton>
-        <KakaoLogo width={20} height={20} />
+        <KakaoLogo width={20} height={20} fill="#000000" />
         <S.SocialLoginButtonTextBox>
           <S.SocialLoginButtonText>카카오로 로그인하기</S.SocialLoginButtonText>
         </S.SocialLoginButtonTextBox>

@@ -2,14 +2,15 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./StoreLogin.styles";
 import { useState } from "react";
 import Logo from "../../assets/images/logo.png";
+import Input from "../../components/Common/Form/Input";
 
 function StoreLogin() {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigate();
-  const navigateToCustomerLogin = () => {
-    navigate("/login");
+  const navigateTo = (url: string) => {
+    navigate(url);
   };
 
   return (
@@ -28,34 +29,14 @@ function StoreLogin() {
           name="password"
           setValue={setPassword}
         />
+        <S.Button>
+          <S.ButtonText>로그인</S.ButtonText>
+        </S.Button>
       </S.InputBox>
-      <S.Text>회원가입하기</S.Text>
-      <S.Text onClick={() => navigateToCustomerLogin()}>
-        일반 회원이신가요 ?
-      </S.Text>
+      <S.Text onClick={() => navigateTo("/store/sign-up")}>회원가입하기</S.Text>
+      <S.Text onClick={() => navigateTo("/login")}>일반 회원이신가요 ?</S.Text>
     </S.Layout>
   );
 }
 
 export default StoreLogin;
-
-interface InputProps {
-  placeholder: string;
-  type: string;
-  name: string;
-  setValue: any;
-}
-
-const Input = ({ placeholder, type, name, setValue }: InputProps) => {
-  const handleInputChange = (event: any) => {
-    setValue(event.target.value);
-  };
-
-  return (
-    <S.Input
-      placeholder={placeholder}
-      type={type ? type : "text"}
-      onChange={handleInputChange}
-    />
-  );
-};

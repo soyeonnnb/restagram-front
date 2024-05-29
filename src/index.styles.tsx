@@ -12,6 +12,10 @@ export const Layout = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Box = styled.div`

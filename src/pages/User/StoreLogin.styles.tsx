@@ -26,20 +26,25 @@ export const InputBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
+  height: 180px;
   margin-bottom: 12px;
 `;
 
-export const Input = styled.input`
-  width: 300px;
+export const Button = styled.div`
+  width: 344px;
   height: 50px;
-  outline: none;
-  border: 2px solid ${colors.purple._100};
-  padding: 0 20px;
-  font-size: 15px;
+  background-color: ${colors.purple._100};
   border-radius: 10px;
-
-  &:focus {
-    border-color: ${colors.purple._500};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+    background-color: ${colors.purple._300};
   }
+`;
+
+export const ButtonText = styled.span`
+  font-weight: 700;
+  color: ${colors.white._50};
 `;
