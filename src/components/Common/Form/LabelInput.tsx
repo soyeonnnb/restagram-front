@@ -7,6 +7,8 @@ interface LabelInputProps {
   type: string;
   name: string;
   setValue: any;
+  verifyText?: string;
+  verifyTextColor?: string;
 }
 
 const LabelInput = ({
@@ -15,6 +17,8 @@ const LabelInput = ({
   type,
   name,
   setValue,
+  verifyText,
+  verifyTextColor,
 }: LabelInputProps) => {
   return (
     <S.Box>
@@ -24,6 +28,8 @@ const LabelInput = ({
         type={type}
         name={name}
         setValue={setValue}
+        verifyText={verifyText}
+        verifyTextColor={verifyTextColor}
       />
     </S.Box>
   );

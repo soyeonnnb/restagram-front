@@ -4,9 +4,11 @@ interface InputProps {
   placeholder: string;
   type: string;
   name: string;
+  value?: any;
   setValue: any;
   disable?: boolean;
   verifyText?: string;
+  verifyTextColor?: string;
 }
 
 const Input = ({
@@ -15,7 +17,9 @@ const Input = ({
   name,
   setValue,
   disable,
+  value,
   verifyText,
+  verifyTextColor,
 }: InputProps) => {
   const handleInputChange = (event: any) => {
     setValue(event.target.value);
@@ -28,8 +32,11 @@ const Input = ({
         type={type ? type : "text"}
         onChange={handleInputChange}
         disabled={disable}
+        value={value}
       />
-      {verifyText !== "" && <S.VerifyText>{verifyText}</S.VerifyText>}
+      {verifyText !== "" && (
+        <S.VerifyText color={verifyTextColor}>{verifyText}</S.VerifyText>
+      )}
     </S.Box>
   );
 };

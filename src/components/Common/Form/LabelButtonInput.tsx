@@ -9,11 +9,14 @@ interface LabelButtonInputProps {
   label: string;
   type: string;
   name: string;
+  value?: any;
   setValue: any;
   disable?: boolean;
-  buttonText: string;
-  buttonFunction: any;
+  buttonText?: string;
+  buttonFunction?: any;
   check?: boolean | null;
+  verifyText?: string;
+  verifyTextColor?: string;
 }
 
 const LabelButtonInput = ({
@@ -21,11 +24,14 @@ const LabelButtonInput = ({
   label,
   type,
   name,
+  value,
   setValue,
   disable,
   buttonText,
   buttonFunction,
   check,
+  verifyText,
+  verifyTextColor,
 }: LabelButtonInputProps) => {
   return (
     <S.Layout>
@@ -35,8 +41,11 @@ const LabelButtonInput = ({
           placeholder={placeholder}
           type={type}
           name={name}
+          value={value}
           setValue={setValue}
           disable={disable}
+          verifyText={verifyText}
+          verifyTextColor={verifyTextColor}
         />
         <S.LeftBox>
           {check === true && (
@@ -45,9 +54,11 @@ const LabelButtonInput = ({
           {check === false && (
             <XIcon width={23} height={23} fill={colors.red._300} />
           )}
-          <S.Button onClick={() => buttonFunction()}>
-            <S.ButtonText>{buttonText}</S.ButtonText>
-          </S.Button>
+          {buttonText && (
+            <S.Button onClick={() => buttonFunction()}>
+              <S.ButtonText>{buttonText}</S.ButtonText>
+            </S.Button>
+          )}
         </S.LeftBox>
       </S.Box>
     </S.Layout>

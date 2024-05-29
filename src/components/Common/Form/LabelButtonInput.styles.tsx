@@ -18,7 +18,7 @@ export const Label = styled.span`
 
 export const LeftBox = styled.div`
   position: absolute;
-  top: 15px;
+  top: 19px;
   right: 10px;
   display: flex;
   align-items: center;

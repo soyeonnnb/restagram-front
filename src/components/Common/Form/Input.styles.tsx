@@ -22,8 +22,8 @@ export const Input = styled.input`
   }
 `;
 
-export const VerifyText = styled.span`
+export const VerifyText = styled.span<{ color?: string }>`
   margin: 5px 0 10px 20px;
   font-size: 0.9rem;
-  color: ${colors.red._500};
+  color: ${(props) => (props.color ? props.color : colors.red._500)};
 `;
