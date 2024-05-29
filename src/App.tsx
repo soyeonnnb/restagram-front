@@ -7,13 +7,14 @@ import Main from "./pages/Main/Main";
 import StoreLogin from "./pages/User/StoreLogin";
 import StoreSignup from "./pages/User/StoreSignup";
 import SocialLoginSuccess from "./pages/User/SocialLoginSuccess";
+import Logout from "./pages/User/Logout";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path="" element={<Main />} />
+          <Route path="/" element={<Main />} />
         </Route>
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<CustomerLogin />} />
@@ -24,6 +25,7 @@ function App() {
             element={<SocialLoginSuccess />}
           />
         </Route>
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );

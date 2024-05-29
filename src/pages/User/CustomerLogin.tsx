@@ -6,20 +6,24 @@ import Logo from "../../assets/images/logo.png";
 function Login() {
   const navigate = useNavigate();
 
-  const navigateToStoreLogin = () => {
-    navigate("/store/login");
+  const navigateTo = (url: string) => {
+    window.location.href = url;
   };
 
   return (
     <S.Layout>
       <S.LogoImage src={Logo} alt="로고 이미지" />
-      <S.SocialLoginButton>
+      <S.SocialLoginButton
+        onClick={() =>
+          navigateTo("http://localhost:8080/oauth2/authorization/kakao")
+        }
+      >
         <KakaoLogo width={20} height={20} fill="#000000" />
         <S.SocialLoginButtonTextBox>
           <S.SocialLoginButtonText>카카오로 로그인하기</S.SocialLoginButtonText>
         </S.SocialLoginButtonTextBox>
       </S.SocialLoginButton>
-      <S.Text onClick={() => navigateToStoreLogin()}>
+      <S.Text onClick={() => navigate("/store/login")}>
         가게 회원이신가요 ?
       </S.Text>
     </S.Layout>

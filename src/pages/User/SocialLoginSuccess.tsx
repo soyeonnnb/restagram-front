@@ -9,17 +9,8 @@ function SocialLoginSuccess() {
   const navigation = useNavigate();
 
   const handleSocialLogin = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get("code");
-
-    // code가 없는 경우 처리
-    if (!code) {
-      console.error("No authorization code found in URL");
-      return;
-    }
-
     customAxios
-      .get(`/customer/info?code=${code}`)
+      .get(`/customer/info`)
       .then((res) => {
         // 응답을 처리하는 로직을 여기에 작성
         setUserInfo(res.data.data);
