@@ -1,8 +1,8 @@
 import * as S from "./LabelButtonInput.styles";
 import Input from "./Input";
 import colors from "../colors";
-import { ReactComponent as CheckIcon } from "../../../assets/icons/CircleCheckIcon.svg";
-import { ReactComponent as XIcon } from "../../../assets/icons/CircleXIcon.svg";
+import { ReactComponent as CheckIcon } from "../../../assets/icons/circle-check.svg";
+import { ReactComponent as XIcon } from "../../../assets/icons/circle-x.svg";
 
 interface LabelButtonInputProps {
   placeholder: string;

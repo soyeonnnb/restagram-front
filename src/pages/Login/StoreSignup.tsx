@@ -4,7 +4,7 @@ import LabelButtonInput from "../../components/Common/Form/LabelButtonInput";
 import * as S from "./StoreSignup.styles";
 import LogoImage from "../../assets/images/logo.png";
 
-import { ReactComponent as BackIcon } from "../../assets/icons/chevron-back-sharp.svg";
+import { ReactComponent as BackIcon } from "../../assets/icons/chevron-back.svg";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

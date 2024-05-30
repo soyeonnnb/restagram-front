@@ -10,7 +10,7 @@ const handle401Error = () => {
   // 401 에러 처리
   alert("로그인이 필요합니다.");
   // 로그인 페이지로 이동
-  window.location.href = "/logout"; // 또는 useHistory 훅을 사용하여 이동
+  window.location.href = "/login"; // 또는 useHistory 훅을 사용하여 이동
 };
 
 customAxios.interceptors.response.use(

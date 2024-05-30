@@ -1,6 +1,6 @@
 import DaumPostCode from "react-daum-postcode";
 import * as S from "./DaumPost.styles";
-import { ReactComponent as XIcon } from "../../assets/icons/CircleXIcon.svg";
+import { ReactComponent as XIcon } from "../../assets/icons/circle-x.svg";
 import colors from "../Common/colors";
 
 interface DaumPostProps {

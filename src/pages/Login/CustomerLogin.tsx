@@ -1,5 +1,5 @@
 import * as S from "./CustomerLogin.styles";
-import { ReactComponent as KakaoLogo } from "../../assets/icons/KakaoLogo.svg";
+import { ReactComponent as KakaoLogo } from "../../assets/icons/kakao-logo.svg";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 
