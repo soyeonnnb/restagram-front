@@ -9,6 +9,7 @@ export const Layout = styled.div`
   height: 60px;
   display: flex;
   justify-content: center;
+  z-index: 99;
 `;
 
 export const LeftBox = styled.div`

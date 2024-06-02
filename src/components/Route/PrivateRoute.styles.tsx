@@ -13,7 +13,8 @@ export const Layout = styled.div`
 export const Main = styled.div`
   margin-top: 60px;
   width: 100%;
-  height: 2000px;
+  height: 100%;
+  padding-bottom: 40px;
   background-color: aqua;
 `;
 

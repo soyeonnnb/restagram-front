@@ -19,7 +19,7 @@ function PrivateRoutes() {
   const [isLogin, setIsLogin] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const loggedIn = userInfo !== null;
+    const loggedIn = userInfo != null;
     if (loggedIn) {
       setType(userInfo.type);
     }

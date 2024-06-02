@@ -3,31 +3,35 @@ import { useNavigate } from "react-router-dom";
 
 const customAxios: AxiosInstance = axios.create({
   baseURL: `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}`, // 기본 서버 주소 입력
-  withCredentials: true,
+  withCredentials: true, // 이 옵션을 추가하여 쿠키를 서버로 자동으로 보내줍니다.
 });
-
-const handle401Error = () => {
-  // 401 에러 처리
-  alert("로그인이 필요합니다.");
-  // 로그인 페이지로 이동
-  window.location.href = "/login"; // 또는 useHistory 훅을 사용하여 이동
-};
 
 customAxios.interceptors.response.use(
   function (response) {
     return response;
   },
-  function (error) {
+  async function (error) {
+    const originalRequest = error.config;
     if (error.response && error.response.status) {
       switch (error.response.status) {
-        // status code가 401인 경우 `logout`을 커밋하고 `/login` 페이지로 리다이렉트
         case 401:
-          handle401Error();
-          return;
-        // 이행되지 않는 Promise를 반환하여 Promise Chaining 끊어주기
-        // return new Promise(() => {});
-        // default:
-        //   return Promise.reject(error);
+          try {
+            // 재로그인 요청
+            await axios.post(
+              `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}/user/reissue`,
+              {},
+              { withCredentials: true }
+            );
+            const response = await customAxios(originalRequest);
+            return response;
+          } catch (error) {
+            console.error("Error during reissue:", error);
+            // 재로그인 실패 시 로그아웃 후 로그인 페이지로 리다이렉트
+            // window.location.href = "/logout";
+            return Promise.reject(error);
+          }
+        default:
+          return Promise.reject(error);
       }
     }
     return Promise.reject(error);

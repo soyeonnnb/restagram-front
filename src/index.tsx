@@ -10,7 +10,9 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <>
+    {/* <React.StrictMode>
+    </React.StrictMode> */}
     <Reset />
     <S.Layout>
       <S.Box>
@@ -19,7 +21,7 @@ root.render(
         </RecoilRoot>
       </S.Box>
     </S.Layout>
-  </React.StrictMode>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
