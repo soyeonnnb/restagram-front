@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../Common/colors";
 
 export const Layout = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ export const Main = styled.div`
   width: 100%;
   height: 100%;
   padding-bottom: 40px;
-  background-color: aqua;
+  /* background-color: ${colors.purple._100}; */
 `;
 
 export const BottomBox = styled.div``;
