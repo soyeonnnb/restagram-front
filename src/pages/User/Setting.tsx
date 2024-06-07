@@ -13,7 +13,7 @@ function Setting() {
 
   const handleKakaoCalender = () => {
     customAxios
-      .patch("/customer/calendar/agree", { agree: !agree })
+      .patch("/calendar/agree", { agree: !agree })
       .then((res) => {
         setAgree(res.data.data.agree);
       })

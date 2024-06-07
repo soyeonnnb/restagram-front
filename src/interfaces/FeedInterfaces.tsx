@@ -15,3 +15,9 @@ export interface FeedImageInterface {
   url: string;
   number: number;
 }
+
+export interface FeedListInterface {
+  cursorId: number;
+  feeds: FeedInterface[];
+  hasNext: boolean;
+}

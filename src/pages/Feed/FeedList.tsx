@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as S from "./FeedList.styles";
-import { FeedInterface } from "../../interfaces/FeedInterfaces";
+import {
+  FeedInterface,
+  FeedListInterface,
+} from "../../interfaces/FeedInterfaces";
 import customAxios from "../../utils/customAxios";
 import Feed from "../../components/Feed/Feed";
+import { useInView } from "react-intersection-observer";
 
 function FeedList() {
   const [feedList, setFeedList] = useState<FeedInterface[]>([]);
+  const [cursorId, setCursorId] = useState<number | null>(null);
+  const [hasNext, setHasNext] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const toggleIsLike = (id: number, isLike: boolean) => {
     if (feedList.some((feed) => feed.id === id)) {
@@ -35,28 +42,41 @@ function FeedList() {
     }
   };
 
-  const getData = () => {
-    customAxios.get("/feed").then((res) => {
-      const transformedData = res.data.data.map((feed: FeedInterface) => {
-        return {
-          ...feed,
-          time: feed.time instanceof Date ? feed.time : new Date(feed.time),
-        };
-      });
-      setFeedList(transformedData);
-    });
+  const fetchData = () => {
+    setIsLoading(true);
+    customAxios
+      .get(`/feed/cursor?cursorId=${cursorId ? cursorId : ""}`)
+      .then((res) => res.data.data)
+      .then((data: FeedListInterface) => {
+        setCursorId(data.cursorId);
+        setHasNext(data.hasNext);
+        const transformData = data.feeds.map((feed: FeedInterface) => {
+          return {
+            ...feed,
+            time: feed.time instanceof Date ? feed.time : new Date(feed.time),
+          };
+        });
+        setFeedList([...feedList, ...transformData]);
+      })
+      .then(() => setIsLoading(false));
   };
 
+  const [ref, inView] = useInView();
   useEffect(() => {
-    getData();
-  }, []);
+    if (inView && !isLoading) {
+      fetchData();
+    }
+  }, [inView]);
 
   return (
     <S.Layout>
-      {feedList.length > 0 &&
-        feedList.map((feed, idx) => (
-          <Feed feed={feed} key={idx} handleIsLike={handleIsLike} />
-        ))}
+      <S.FeedUl>
+        {feedList.length > 0 &&
+          feedList.map((feed, idx) => (
+            <Feed feed={feed} key={idx} handleIsLike={handleIsLike} />
+          ))}
+      </S.FeedUl>
+      <S.Observer ref={ref} />
     </S.Layout>
   );
 }
