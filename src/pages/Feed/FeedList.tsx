@@ -63,7 +63,7 @@ function FeedList() {
 
   const [ref, inView] = useInView();
   useEffect(() => {
-    if (inView && !isLoading) {
+    if (inView && !isLoading && hasNext) {
       fetchData();
     }
   }, [inView]);
