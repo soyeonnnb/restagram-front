@@ -35,7 +35,7 @@ function App() {
             <Route path="reservation" element={<MyReservation />} />
             <Route path="coupon" element={<MyCoupon />} />
           </Route>
-          <Route path="feed" element={<UserFeed />} />
+          <Route path="feed/:userId" element={<UserFeed />} />
           <Route path="dm" element={<DM />} />
           <Route path="notification" element={<Notification />} />
           <Route path="setting" element={<Setting />} />

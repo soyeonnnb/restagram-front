@@ -43,7 +43,7 @@ function StoreLogin() {
     console.log(body);
 
     customAxios
-      .post("/user/login", body)
+      .post("/store/login", body)
       .then((res) => {
         setUserInfo(res.data.data);
         navigate("/");

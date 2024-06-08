@@ -24,7 +24,7 @@ function UserInfo({ user }: UserInfoProps) {
             <StoreIcon width={18} height={18} fill={colors.purple._400} />
           </S.IconBox>
         )}
-        <S.Text onClick={() => navigate(`/feed?id=${user.id}`)}>
+        <S.Text onClick={() => navigate(`/feed/${user.id}`)}>
           {user.nickname}
         </S.Text>
       </S.Box>

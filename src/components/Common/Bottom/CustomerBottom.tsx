@@ -29,7 +29,7 @@ function CustomerBottom() {
       />
       <NavBox
         Icon={MeIcon}
-        url={`/feed?id=${userInfo?.id}`}
+        url={`/feed/${userInfo?.id}`}
         handleNavigate={handleNavigate}
       />
     </S.Layout>

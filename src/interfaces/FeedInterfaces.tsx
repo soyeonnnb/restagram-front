@@ -21,3 +21,15 @@ export interface FeedListInterface {
   feeds: FeedInterface[];
   hasNext: boolean;
 }
+
+export interface UserFeedImageInterface {
+  id: number;
+  imageUrl: string;
+  imageId: number;
+}
+
+export interface FeedImageCursorInterface {
+  cursorId: number;
+  images: UserFeedImageInterface[];
+  hasNext: boolean;
+}

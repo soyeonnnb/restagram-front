@@ -15,3 +15,29 @@ export interface StoreInfoInterface {
   detailAddress: string;
   storePhone: string;
 }
+
+export interface FeedUserInfoInterface {
+  id: number;
+  type: "CUSTOMER" | "STORE";
+  nickname: string;
+  description: string;
+  profileImage: string;
+  feedNum: number;
+  followingNum: number;
+  isFollow: boolean;
+}
+
+export interface FeedStoreInfoInterface extends FeedUserInfoInterface {
+  type: "STORE";
+  address: string;
+  detailAddress: string;
+  storeName: string;
+  storePhone: string;
+  reviewNum: number;
+  couponNum: number;
+}
+
+export interface FeedCustomerInfoInterface extends FeedUserInfoInterface {
+  type: "CUSTOMER";
+  followerNum: number;
+}
