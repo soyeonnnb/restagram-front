@@ -34,7 +34,7 @@ const Input = ({
         disabled={disable}
         value={value}
       />
-      {verifyText !== "" && (
+      {verifyText && (
         <S.VerifyText color={verifyTextColor}>{verifyText}</S.VerifyText>
       )}
     </S.Box>
