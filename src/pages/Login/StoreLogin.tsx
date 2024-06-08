@@ -46,7 +46,7 @@ function StoreLogin() {
       .post("/store/login", body)
       .then((res) => {
         setUserInfo(res.data.data);
-        navigate("/");
+        navigate(`/feed/${res.data.data.id}`);
       })
       .catch((e) => {
         setVerifyEmail("이메일 또는 비밀번호가 잘못되었습니다.");

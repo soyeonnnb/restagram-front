@@ -8,12 +8,16 @@ import { ReactComponent as LocationIcon } from "../../../assets/icons/earth.svg"
 import { ReactComponent as PhoneIcon } from "../../../assets/icons/call.svg";
 
 import colors from "../../Common/colors";
+import { useRecoilValue } from "recoil";
+import { userInfoState } from "../../../recoil/UserRecoil";
 
 interface StoreInfoBoxProps {
   userInfo: FeedStoreInfoInterface;
 }
 
 function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
+  const user = useRecoilValue(userInfoState);
+
   return (
     <S.Layout>
       <S.HeaderBox>
@@ -50,14 +54,16 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
         <Overview number={userInfo.reviewNum} description="리뷰수" />
         <Overview number={userInfo.followingNum} description="팔로잉" />
       </O.Ul>
-      <S.BottomBox>
-        <S.Button>
-          <Text text="쿠폰발급" pointer={true} size="0.9rem" />
-        </S.Button>
-        <S.Button>
-          <Text text="예약" pointer={true} size="0.9rem" />
-        </S.Button>
-      </S.BottomBox>
+      {user?.id !== userInfo.id && (
+        <S.BottomBox>
+          <S.Button>
+            <Text text="쿠폰발급" pointer={true} size="0.9rem" />
+          </S.Button>
+          <S.Button>
+            <Text text="예약" pointer={true} size="0.9rem" />
+          </S.Button>
+        </S.BottomBox>
+      )}
     </S.Layout>
   );
 }
