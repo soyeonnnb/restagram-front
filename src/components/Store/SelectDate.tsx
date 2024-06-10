@@ -9,11 +9,19 @@ interface SelectDateProps {
   year: number;
   handleDate: (idx: number) => void;
   month: number;
+  width: number;
+  height: number;
 }
 
-function SelectDate({ year, month, handleDate }: SelectDateProps) {
+function SelectDate({
+  year,
+  month,
+  handleDate,
+  width,
+  height,
+}: SelectDateProps) {
   return (
-    <S.Layout>
+    <S.Layout width={width} height={height}>
       <PrevArrowIcon
         className="icon"
         width={20}

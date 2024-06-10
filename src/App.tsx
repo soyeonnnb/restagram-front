@@ -19,6 +19,8 @@ import Notification from "./pages/User/Notification";
 import ReservationList from "./pages/Store/ReservationList";
 import CouponList from "./pages/Store/CouponList";
 import Setting from "./pages/User/Setting";
+import ReservationFormList from "./pages/Store/ReservationFormList";
+import ReservationForm from "./pages/Store/ReservationForm";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="store" element={<StoreRoute />}>
             <Route path="reservation" element={<ReservationList />} />
+            <Route path="reservation/form" element={<ReservationFormList />} />
+            <Route path="reservation/form/add" element={<ReservationForm />} />
             <Route path="coupon" element={<CouponList />} />
           </Route>
           <Route element={<CustomerRoute />}>

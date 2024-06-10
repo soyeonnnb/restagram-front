@@ -2,8 +2,8 @@ import styled from "styled-components";
 import colors from "../../Common/colors";
 
 export const Layout = styled.li<{ canceled: boolean }>`
-  background-color: ${(props) =>
-    props.canceled ? colors.white._700 : colors.purple._50};
+  background-color: ${({ canceled }) =>
+    canceled ? colors.white._700 : colors.purple._50};
   width: 100%;
   padding: 20px 30px;
   box-sizing: border-box;
@@ -18,7 +18,7 @@ export const Row = styled.div`
 `;
 export const Box = styled.div<{ fullwidth?: string }>`
   display: flex;
-  flex: ${(props) => (props.fullwidth === "true" ? "1 1 100%" : "1 1 50%")};
+  flex: ${({ fullwidth }) => (fullwidth === "true" ? "1 1 100%" : "1 1 50%")};
   align-items: center;
   & > span {
     margin-right: 10px;
@@ -27,7 +27,7 @@ export const Box = styled.div<{ fullwidth?: string }>`
 export const Badge = styled.div<{ color: string }>`
   display: flex;
   padding: 2px 4px;
-  background-color: ${(props) => props.color};
+  background-color: ${({ color }) => color};
   border-radius: 2px;
   margin-right: 5px;
 `;

@@ -5,15 +5,27 @@ interface TextProps {
   color?: string;
   size?: string;
   pointer?: boolean;
+  marginR?: number;
+  marginL?: number;
 }
 
-function Text({ text, weight, color, size, pointer }: TextProps) {
+function Text({
+  text,
+  weight,
+  color,
+  size,
+  pointer,
+  marginR,
+  marginL,
+}: TextProps) {
   return (
     <S.Span
       weight={weight}
       color={color}
       size={size}
       pointer={pointer?.toString()}
+      marginR={marginR}
+      marginL={marginL}
     >
       {text}
     </S.Span>

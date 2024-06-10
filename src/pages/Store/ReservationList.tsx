@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as S from "./ReservationList.styles";
 import Text from "../../components/Common/Text";
 import SelectDate from "../../components/Store/SelectDate";
@@ -8,13 +8,24 @@ import {
 } from "../../interfaces/ReservationInterfaces";
 import customAxios from "../../utils/customAxios";
 import ReservationUl from "../../components/Reservation/Store/ReservationUl";
+import { ReactComponent as ListIcon } from "../../assets/icons/list.svg";
+import colors from "../../components/Common/colors";
+import { useNavigate } from "react-router-dom";
 
 function ReservationList() {
+  const navigate = useNavigate();
+
   const [cancelFilter, setCancelFilter] = useState<boolean>(false);
   const [year, setYear] = useState<number>(new Date().getFullYear());
   const [month, setMonth] = useState<number>(new Date().getMonth() + 1);
   const [totalReservationList, setTotalReservationList] =
     useState<GroupedStoreReservation>({});
+  const [toggle, setToggle] = useState<boolean>(false);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
   const fetchData = () => {
     customAxios
       .get(`/reservation/store?year=${year}&month=${month}`)
@@ -119,9 +130,17 @@ function ReservationList() {
     setCancelFilter(isCancel);
   };
 
+  const widthRef = useRef<HTMLDivElement>(null);
+  const [screenWidth, setScreenWidth] = useState<number>(468);
+  useEffect(() => {
+    if (widthRef.current != null) {
+      setScreenWidth(widthRef.current.offsetWidth);
+    }
+  }, [widthRef.current?.offsetWidth]);
+
   return (
-    <S.Layout>
-      <S.Header>
+    <S.Layout ref={widthRef}>
+      <S.Header width={screenWidth}>
         <S.HeaderBox onClick={() => handleCancel(false)}>
           <Text text="확정된 예약만" pointer />
         </S.HeaderBox>
@@ -130,7 +149,13 @@ function ReservationList() {
         </S.HeaderBox>
       </S.Header>
       <S.Main>
-        <SelectDate year={year} month={month} handleDate={handleDate} />
+        <SelectDate
+          year={year}
+          month={month}
+          handleDate={handleDate}
+          width={screenWidth}
+          height={115}
+        />
         <ReservationUl
           year={year}
           month={month}
@@ -139,6 +164,19 @@ function ReservationList() {
           updateReservationStatus={updateReservationStatus}
         />
       </S.Main>
+      <S.ToggleButtonBox width={screenWidth}>
+        <S.ToggleBox show={toggle}>
+          <S.ToggleRow onClick={() => navigate("/store/reservation/form/add")}>
+            <Text text="예약 가능 날짜 추가" pointer />
+          </S.ToggleRow>
+          <S.ToggleRow onClick={() => navigate("/store/reservation/form")}>
+            <Text text="예약폼 보기" pointer />
+          </S.ToggleRow>
+        </S.ToggleBox>
+        <S.ToggleButton onClick={() => handleToggle()}>
+          <ListIcon width={25} height={25} fill={colors.blue._800} />
+        </S.ToggleButton>
+      </S.ToggleButtonBox>
     </S.Layout>
   );
 }
