@@ -10,8 +10,13 @@ import { ReactComponent as EditButton } from "../../assets/icons/create.svg";
 import colors from "../../components/Common/colors";
 import ExceptDate from "../../components/Reservation/Store/Form/ExceptDate";
 import WeeklyFormRow from "../../components/Reservation/Store/Form/WeeklyFormRow";
+import { finished } from "stream";
+import customAxios from "../../utils/customAxios";
+import { useNavigate } from "react-router-dom";
 
 function ReservationForm() {
+  const navigate = useNavigate();
+
   const today = new Date();
   const [dateRange, setDateRange] = useState<[Date, Date]>([
     new Date(),
@@ -158,13 +163,27 @@ function ReservationForm() {
     handleResetForm();
   };
 
-  const handleFormAddSubmit = () => {};
+  const handleFormAddSubmit = () => {
+    const body = {
+      startAt: startDate,
+      finishAt: endDate,
+      exceptDateList: exceptDateList,
+      tablePerson: tablePerson,
+      maxReservationPerson: maxReservationPerson,
+      weekListMap: reservationFormList,
+    };
+
+    customAxios.post("/reservation/form", body).then(() => {
+      alert("예약 폼 생성 완료");
+      navigate("/store/reservation");
+    });
+  };
 
   return (
     <S.Layout>
       <Text text="예약 추가" size="1.3rem" weight={600} />
       <Text
-        text="이전에 추가된 날짜는 시간이 겹칠 시 테이블만 추가됩니다."
+        text="이전에 추가된 날짜는 시간이 겹칠 시 테이블 수만 추가됩니다."
         size="0.8rem"
         color={colors.red._500}
       />
