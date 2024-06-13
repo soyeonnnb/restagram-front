@@ -39,7 +39,7 @@ function UserFeed() {
   const fetchImageData = () => {
     setIsLoading(true);
     customAxios
-      .get(`/feed/image/${userId}?cursorId=${cursorId ? cursorId : ""}`)
+      .get(`/feed/image/${userId}?cursor-id=${cursorId ? cursorId : ""}`)
       .then((res) => res.data.data)
       .then((data: FeedImageCursorInterface) => {
         setCursorId(data.cursorId);

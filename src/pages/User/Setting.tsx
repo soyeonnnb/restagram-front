@@ -6,10 +6,13 @@ import { useState } from "react";
 import Toggle from "react-toggle";
 import "../../assets/styles/react-toggle.css";
 import customAxios from "../../utils/customAxios";
+import { useRecoilValue } from "recoil";
+import { userInfoState } from "../../recoil/UserRecoil";
 
 function Setting() {
   const navigate = useNavigate();
   const [agree, setAgree] = useState<boolean>(false);
+  const userInfo = useRecoilValue(userInfoState);
 
   const handleKakaoCalender = () => {
     customAxios
@@ -43,11 +46,15 @@ function Setting() {
           <S.RowText>비밀번호 수정</S.RowText>
         </S.Row>
         <S.Divider />
-        <S.Row>
-          <S.RowText>카카오톡 캘린더에 추가</S.RowText>
-          <Toggle defaultChecked={agree} onChange={handleKakaoCalender} />
-        </S.Row>
-        <S.Divider />
+        {userInfo?.type === "CUSTOMER" && (
+          <>
+            <S.Row>
+              <S.RowText>카카오톡 캘린더에 추가</S.RowText>
+              <Toggle defaultChecked={agree} onChange={handleKakaoCalender} />
+            </S.Row>
+            <S.Divider />
+          </>
+        )}
         <S.Row className="hover" onClick={() => navigate("/logout")}>
           <S.RowText>로그아웃</S.RowText>
         </S.Row>

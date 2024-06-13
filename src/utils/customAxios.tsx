@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { useNavigate } from "react-router-dom";
 
 const customAxios: AxiosInstance = axios.create({
-  baseURL: `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}`, // 기본 서버 주소 입력
+  baseURL: `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}/api/v1`, // 기본 서버 주소 입력
   withCredentials: true, // 이 옵션을 추가하여 쿠키를 서버로 자동으로 보내줍니다.
 });
 
