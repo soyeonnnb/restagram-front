@@ -13,6 +13,7 @@ import WeeklyFormRow from "../../components/Reservation/Store/Form/WeeklyFormRow
 import { finished } from "stream";
 import customAxios from "../../utils/customAxios";
 import { useNavigate } from "react-router-dom";
+import { start } from "repl";
 
 function ReservationForm() {
   const navigate = useNavigate();
@@ -163,15 +164,24 @@ function ReservationForm() {
     handleResetForm();
   };
 
+  const toLocalISOString = (date: Date): string => {
+    const tzOffset = date.getTimezoneOffset() * 60000; // 밀리초 단위로 변환
+    const localTime = new Date(date.getTime() - tzOffset); // 밀리초 단위로 계산
+    const localISOTime = localTime.toISOString().split("T")[0];
+    return localISOTime;
+  };
+
   const handleFormAddSubmit = () => {
     const body = {
-      startAt: startDate,
-      finishAt: endDate,
-      exceptDateList: exceptDateList,
+      startAt: toLocalISOString(startDate),
+      finishAt: toLocalISOString(endDate),
+      exceptDateList: exceptDateList.map((date) => toLocalISOString(date)),
       tablePerson: tablePerson,
       maxReservationPerson: maxReservationPerson,
       weekListMap: reservationFormList,
     };
+
+    console.log(body);
 
     customAxios.post("/reservation/form", body).then(() => {
       alert("예약 폼 생성 완료");

@@ -8,9 +8,9 @@ import {
 } from "../../interfaces/ReservationInterfaces";
 import customAxios from "../../utils/customAxios";
 import ReservationUl from "../../components/Reservation/Store/ReservationUl";
-import { ReactComponent as ListIcon } from "../../assets/icons/list.svg";
 import colors from "../../components/Common/colors";
 import { useNavigate } from "react-router-dom";
+import Toggle from "../../components/Reservation/Store/Form/Toggle";
 
 function ReservationList() {
   const navigate = useNavigate();
@@ -20,11 +20,6 @@ function ReservationList() {
   const [month, setMonth] = useState<number>(new Date().getMonth() + 1);
   const [totalReservationList, setTotalReservationList] =
     useState<GroupedStoreReservation>({});
-  const [toggle, setToggle] = useState<boolean>(false);
-
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
 
   const fetchData = () => {
     customAxios
@@ -164,19 +159,7 @@ function ReservationList() {
           updateReservationStatus={updateReservationStatus}
         />
       </S.Main>
-      <S.ToggleButtonBox width={screenWidth}>
-        <S.ToggleBox show={toggle}>
-          <S.ToggleRow onClick={() => navigate("/store/reservation/form/add")}>
-            <Text text="예약 가능 날짜 추가" pointer />
-          </S.ToggleRow>
-          <S.ToggleRow onClick={() => navigate("/store/reservation/form")}>
-            <Text text="예약폼 보기" pointer />
-          </S.ToggleRow>
-        </S.ToggleBox>
-        <S.ToggleButton onClick={() => handleToggle()}>
-          <ListIcon width={25} height={25} fill={colors.blue._800} />
-        </S.ToggleButton>
-      </S.ToggleButtonBox>
+      <Toggle screenWidth={screenWidth} />
     </S.Layout>
   );
 }
