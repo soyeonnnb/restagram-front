@@ -29,8 +29,6 @@ export type ReservationFormInterface = {
   time: string; // 00:00:00
   quantity: number;
   remainQuantity: number;
-  tablePerson: number; // 테이블 당 인원수
-  maxReservationPerson: number; // 최대 예약 인원수
   state: "ACTIVE" | "DISABLE";
 };
 

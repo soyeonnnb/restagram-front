@@ -260,7 +260,7 @@ function ReservationForm() {
       </S.Box>
       <S.Ul>
         <S.Li>
-          <Text text="테이블 당" size="0.9rem" marginR={10} />
+          <Text text="테이블 당" size="0.9rem" marginr={10} />
           <S.Input
             type="text"
             min="0"
@@ -271,7 +271,7 @@ function ReservationForm() {
           <Text text="인" size="0.9rem" />
         </S.Li>
         <S.Li>
-          <Text text="1회 최대 예약 인원수" size="0.9rem" marginR={10} />
+          <Text text="1회 최대 예약 인원수" size="0.9rem" marginr={10} />
           <S.Input
             type="text"
             min="0"

@@ -8,9 +8,8 @@ import axios from "axios";
 function Logout() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const navigate = useNavigate();
-  const url = process.env.REACT_APP_LOCAL_SERVER_ADDRESS + "/user/logout";
   const handleLogout = () => {
-    axios.post(url, {}, { withCredentials: true }).then(() => {
+    customAxios.post("/user/logout").then(() => {
       setUserInfo(null);
       navigate("/login");
     });

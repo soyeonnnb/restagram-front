@@ -10,6 +10,7 @@ import { ReactComponent as PhoneIcon } from "../../../assets/icons/call.svg";
 import colors from "../../Common/colors";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "../../../recoil/UserRecoil";
+import { useNavigate } from "react-router-dom";
 
 interface StoreInfoBoxProps {
   userInfo: FeedStoreInfoInterface;
@@ -17,7 +18,7 @@ interface StoreInfoBoxProps {
 
 function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
   const user = useRecoilValue(userInfoState);
-
+  const navigate = useNavigate();
   return (
     <S.Layout>
       <S.HeaderBox>
@@ -59,7 +60,7 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
           <S.Button>
             <Text text="쿠폰발급" pointer={true} size="0.9rem" />
           </S.Button>
-          <S.Button>
+          <S.Button onClick={() => navigate(`/reservation/${userInfo?.id}`)}>
             <Text text="예약" pointer={true} size="0.9rem" />
           </S.Button>
         </S.BottomBox>

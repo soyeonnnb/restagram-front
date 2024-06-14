@@ -5,8 +5,8 @@ interface TextProps {
   color?: string;
   size?: string;
   pointer?: boolean;
-  marginR?: number;
-  marginL?: number;
+  marginr?: number;
+  marginl?: number;
 }
 
 function Text({
@@ -15,8 +15,8 @@ function Text({
   color,
   size,
   pointer,
-  marginR,
-  marginL,
+  marginr,
+  marginl,
 }: TextProps) {
   return (
     <S.Span
@@ -24,8 +24,8 @@ function Text({
       color={color}
       size={size}
       pointer={pointer?.toString()}
-      marginR={marginR}
-      marginL={marginL}
+      marginr={marginr}
+      marginl={marginl}
     >
       {text}
     </S.Span>

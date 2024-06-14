@@ -27,10 +27,6 @@ function ReservationFormUl({ list }: ReservationFormUl) {
               size="0.9rem"
               text={`남은 수량/총 수량  ${form.remainQuantity}/${form.quantity}`}
             />
-            <Text
-              size="0.9rem"
-              text={`최대 예약 가능인원  ${form.maxReservationPerson}`}
-            />
           </S.InfoBox>
         </S.Row>
       ))}

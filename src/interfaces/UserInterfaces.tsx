@@ -14,6 +14,8 @@ export interface StoreInfoInterface {
   address: string;
   detailAddress: string;
   storePhone: string;
+  maxReservationPerson: number;
+  tablePerson: number;
 }
 
 export interface FeedUserInfoInterface {

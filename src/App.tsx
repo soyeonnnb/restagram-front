@@ -21,6 +21,7 @@ import CouponList from "./pages/Store/CouponList";
 import Setting from "./pages/User/Setting";
 import ReservationFormList from "./pages/Store/ReservationFormList";
 import ReservationForm from "./pages/Store/ReservationForm";
+import CustomerReservationForm from "./pages/Customer/ReservationForm";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
             <Route path="search" element={<Search />} />
             <Route path="reservation" element={<MyReservation />} />
             <Route path="coupon" element={<MyCoupon />} />
+            <Route
+              path="reservation/:storeId"
+              element={<CustomerReservationForm />}
+            />
           </Route>
           <Route path="feed/:userId" element={<UserFeed />} />
           <Route path="dm" element={<DM />} />
