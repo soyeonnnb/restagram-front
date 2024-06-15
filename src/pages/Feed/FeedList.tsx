@@ -6,7 +6,10 @@ import {
 } from "../../interfaces/FeedInterfaces";
 import customAxios from "../../utils/customAxios";
 import Feed from "../../components/Feed/Feed";
+import FeedListComponent from "../../components/Feed/FeedList";
+
 import { useInView } from "react-intersection-observer";
+import { set } from "date-fns";
 
 function FeedList() {
   const [feedList, setFeedList] = useState<FeedInterface[]>([]);
@@ -70,12 +73,7 @@ function FeedList() {
 
   return (
     <S.Layout>
-      <S.FeedUl>
-        {feedList.length > 0 &&
-          feedList.map((feed, idx) => (
-            <Feed feed={feed} key={idx} handleIsLike={handleIsLike} />
-          ))}
-      </S.FeedUl>
+      <FeedListComponent feedList={feedList} setFeedList={setFeedList} />
       <S.Observer ref={ref} />
     </S.Layout>
   );

@@ -43,3 +43,8 @@ export interface FeedCustomerInfoInterface extends FeedUserInfoInterface {
   type: "CUSTOMER";
   followerNum: number;
 }
+export interface UserInfoCursorInterface {
+  cursorId: number;
+  list: UserInfoInterface[];
+  hasNext: boolean;
+}

@@ -14,6 +14,6 @@ export const Layout = styled.div<{ width: number; height: number }>`
   }
   top: ${({ height }) => height}px;
   position: fixed;
-  z-index: 99;
+  z-index: 4;
 `;
 export const Box = styled.div``;

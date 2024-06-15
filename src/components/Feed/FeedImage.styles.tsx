@@ -4,12 +4,11 @@ import colors from "../Common/colors";
 export const Layout = styled.div<{ width?: number }>`
   width: ${(props) => props.width}px;
   height: ${(props) => props.width}px;
-  background-color: yellow;
   margin-bottom: 20px;
 `;
 
 export const Box = styled.div`
-  background-color: ${colors.purple._50};
+  background-color: ${colors.white._400};
   &:focus {
     outline: none;
   }

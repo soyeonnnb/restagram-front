@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { StoreInfoInterface } from "../../../interfaces/UserInterfaces";
 import * as S from "./StoreInfoModal.styles";
 
@@ -6,6 +7,8 @@ interface StoreInfoModalProps {
 }
 
 function StoreInfoModal({ storeInfo }: StoreInfoModalProps) {
+  const navigate = useNavigate();
+
   return (
     <S.Layout>
       <S.List>
@@ -24,7 +27,7 @@ function StoreInfoModal({ storeInfo }: StoreInfoModalProps) {
           <S.Text>{storeInfo.storePhone}</S.Text>
         </S.Row>
         <S.Box>
-          <S.Button>
+          <S.Button onClick={() => navigate(`/feed/${storeInfo.id}`)}>
             <S.ButtonText>가게 피드</S.ButtonText>
           </S.Button>
         </S.Box>

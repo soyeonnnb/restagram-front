@@ -10,7 +10,7 @@ import Logout from "./pages/Login/Logout";
 import CustomerRoute from "./components/Route/CustomerRoute";
 import StoreRoute from "./components/Route/StoreRoute";
 import FeedList from "./pages/Feed/FeedList";
-import Search from "./pages/Feed/Search";
+import Search from "./pages/Customer/Search";
 import MyReservation from "./pages/Customer/MyReservation";
 import MyCoupon from "./pages/Customer/MyCoupon";
 import UserFeed from "./pages/Feed/UserFeed";
