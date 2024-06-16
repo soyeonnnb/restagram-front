@@ -181,8 +181,6 @@ function ReservationForm() {
       weekListMap: reservationFormList,
     };
 
-    console.log(body);
-
     customAxios.post("/reservation/form", body).then(() => {
       alert("예약 폼 생성 완료");
       navigate("/store/reservation");

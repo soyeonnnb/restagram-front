@@ -68,7 +68,6 @@ function ReservationForm() {
               a.time.localeCompare(b.time)
             );
           });
-          console.log(updatedList);
           return updatedList;
         })
       )

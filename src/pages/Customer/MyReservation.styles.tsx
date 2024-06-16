@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Layout = styled.div`
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  margin-top: 10px;
 `;
 
 export const Button = styled.div`

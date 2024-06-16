@@ -62,7 +62,9 @@ function UserFeed() {
 
   return (
     <S.Layout>
-      {userInfo && <UserInfoBox userInfo={userInfo} />}
+      {userInfo && (
+        <UserInfoBox userInfo={userInfo} setUserInfo={setUserInfo} />
+      )}
       {feedList.length > 0 && <FeedSquareList feedList={feedList} />}
       <S.Observer ref={ref} />
     </S.Layout>

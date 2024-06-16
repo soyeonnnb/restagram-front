@@ -6,13 +6,36 @@ import {
   FeedStoreInfoInterface,
 } from "../../../interfaces/UserInterfaces";
 import Text from "../../Common/Text";
+import { Dispatch, SetStateAction, useEffect } from "react";
+import customAxios from "../../../utils/customAxios";
 
 interface ProfileProps {
   userInfo: FeedCustomerInfoInterface | FeedStoreInfoInterface;
+  setUserInfo: Dispatch<
+    SetStateAction<FeedStoreInfoInterface | FeedCustomerInfoInterface | null>
+  >;
 }
 
-function Profile({ userInfo }: ProfileProps) {
+function Profile({ userInfo, setUserInfo }: ProfileProps) {
   const user = useRecoilValue(userInfoState);
+
+  const handleFollow = (follow: boolean) => {
+    if (follow) {
+      customAxios.post(`/follow/${userInfo.id}`).then(() => {
+        const info = { ...userInfo, follow: true };
+        setUserInfo(info);
+      });
+    } else {
+      customAxios.delete(`/follow/${userInfo.id}`).then(() => {
+        const info = { ...userInfo, follow: false };
+        setUserInfo(info);
+      });
+    }
+  };
+
+  useEffect(() => {
+    console.log(userInfo);
+  }, []);
 
   return (
     <S.Layout>
@@ -22,9 +45,16 @@ function Profile({ userInfo }: ProfileProps) {
         <S.BoxComponent>
           {user && user.id !== userInfo.id && (
             <>
-              <S.Button>
-                <Text text="팔로우" size="0.9rem" pointer={true} />
-              </S.Button>
+              {userInfo.follow && (
+                <S.Button onClick={() => handleFollow(false)}>
+                  <Text text="팔로우 취소" size="0.9rem" pointer={true} />
+                </S.Button>
+              )}
+              {!userInfo.follow && (
+                <S.Button onClick={() => handleFollow(true)}>
+                  <Text text="팔로우" size="0.9rem" pointer={true} />
+                </S.Button>
+              )}
               <S.Button>
                 <Text text="DM" size="0.9rem" pointer={true} />
               </S.Button>

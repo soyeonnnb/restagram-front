@@ -26,7 +26,7 @@ export interface FeedUserInfoInterface {
   profileImage: string;
   feedNum: number;
   followingNum: number;
-  isFollow: boolean;
+  follow: boolean;
 }
 
 export interface FeedStoreInfoInterface extends FeedUserInfoInterface {

@@ -40,7 +40,6 @@ function StoreLogin() {
       password,
       type: "STORE",
     };
-    console.log(body);
 
     customAxios
       .post("/store/login", body)

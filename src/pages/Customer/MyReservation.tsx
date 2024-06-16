@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 import CustomerBottom from "../../components/Common/Bottom/CustomerBottom";
 import { PaginationResponse } from "../../interfaces/CommonInterfaces";
 import ReservationComponent from "../../components/Reservation/Customer/ReservationComponent";
+import Text from "../../components/Common/Text";
 
 function MyReservation() {
   const [reservationList, setReservationList] = useState<
@@ -23,27 +24,22 @@ function MyReservation() {
       state: "CUSTOMER",
     };
 
-    customAxios
-      .patch("/reservation", body)
-      .then(() => {
-        setReservationList((preList) =>
-          preList.map((reservation) =>
-            reservation.reservation.id === id
-              ? {
-                  ...reservation,
-                  reservation: {
-                    ...reservation.reservation,
-                    state: "USER_CANCELED",
-                    cancelMessage: memo,
-                  },
-                }
-              : reservation
-          )
-        );
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    customAxios.patch("/reservation", body).then(() => {
+      setReservationList((preList) =>
+        preList.map((reservation) =>
+          reservation.reservation.id === id
+            ? {
+                ...reservation,
+                reservation: {
+                  ...reservation.reservation,
+                  state: "USER_CANCELED",
+                  cancelMessage: memo,
+                },
+              }
+            : reservation
+        )
+      );
+    });
   };
 
   const fetchData = () => {
@@ -74,8 +70,9 @@ function MyReservation() {
 
   return (
     <>
-      <RCHeader type="reservation" />
+      {/* <RCHeader type="reservation" /> */}
       <S.Layout>
+        <Text text="예약 리스트" marginl={30} size="1.2rem" weight={500} />
         <S.Ul>
           {reservationList.map((re, idx) => (
             <ReservationComponent

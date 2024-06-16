@@ -10,17 +10,21 @@ import Profile from "./Profile";
 import userEvent from "@testing-library/user-event";
 import CustomerInfoBox from "./CustomerInfoBox";
 import StoreInfoBox from "./StoreInfoBox";
+import { Dispatch, SetStateAction } from "react";
 
 interface UserInfoBoxProps {
   userInfo: FeedCustomerInfoInterface | FeedStoreInfoInterface;
+  setUserInfo: Dispatch<
+    SetStateAction<FeedStoreInfoInterface | FeedCustomerInfoInterface | null>
+  >;
 }
 
-function UserInfoBox({ userInfo }: UserInfoBoxProps) {
+function UserInfoBox({ userInfo, setUserInfo }: UserInfoBoxProps) {
   const user = useRecoilValue(userInfoState);
 
   return (
     <S.Layout>
-      <Profile userInfo={userInfo} />
+      <Profile userInfo={userInfo} setUserInfo={setUserInfo} />
       {userInfo?.type === "CUSTOMER" && <CustomerInfoBox userInfo={userInfo} />}
       {userInfo?.type === "STORE" && <StoreInfoBox userInfo={userInfo} />}
       {userInfo?.id === user?.id && (

@@ -61,7 +61,6 @@ function StoreSignup() {
     customAxios
       .get(`/user/duplicate/nickname?query=${nickname}`)
       .then((res) => {
-        console.log(nickname);
         setCheckNickname(!res.data.data.check);
       });
   };
@@ -175,7 +174,6 @@ function StoreSignup() {
       latitude,
       longitude,
     };
-    console.log(data);
 
     customAxios.post(`/store/join`, data).then(() => {
       alert("회원가입 완료");

@@ -82,7 +82,6 @@ function Search() {
           };
         });
         setFeedList([...feedList, ...transformData]);
-        console.log(transformData);
       })
       .then(() => setFeedIsLoading(false));
   };
