@@ -17,6 +17,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { searchAddressState } from "../../recoil/AddressRecoil";
 import AddressSearch from "../../components/Search/AddressSearch";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import SearchBox from "../../components/Common/Form/SearchBox";
 
 function Search() {
   const [type, setType] = useState<"ACCOUNT" | "HASHTAG">("ACCOUNT");
@@ -135,18 +136,13 @@ function Search() {
     <S.Layout ref={widthRef}>
       <S.Header width={screenWidth}>
         <AddressSearch handleInit={handleAddressInit} />
-        <S.SearchBox>
-          <S.Input
-            type="text"
-            onKeyDown={(event) => handleKeyDown(event)}
-            onChange={(event) => setQuery(event.target.value)}
-            value={query}
-            placeholder="닉네임 혹은 해시태그로 검색"
-          />
-          <S.SearchButton onClick={() => handleAddressInit()}>
-            <SearchIcon width={20} height={20} fill="black" />
-          </S.SearchButton>
-        </S.SearchBox>
+        <SearchBox
+          handleKeyDown={handleKeyDown}
+          setQuery={setQuery}
+          query={query}
+          handleSearch={handleSearch}
+          placeholder="닉네임 혹은 해시태그로 검색"
+        />
         <S.SelectBox>
           <S.SelectButton onClick={() => setType("ACCOUNT")}>
             <Text text="계정" pointer />

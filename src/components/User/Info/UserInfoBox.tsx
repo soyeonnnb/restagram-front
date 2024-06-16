@@ -11,6 +11,7 @@ import userEvent from "@testing-library/user-event";
 import CustomerInfoBox from "./CustomerInfoBox";
 import StoreInfoBox from "./StoreInfoBox";
 import { Dispatch, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface UserInfoBoxProps {
   userInfo: FeedCustomerInfoInterface | FeedStoreInfoInterface;
@@ -21,6 +22,7 @@ interface UserInfoBoxProps {
 
 function UserInfoBox({ userInfo, setUserInfo }: UserInfoBoxProps) {
   const user = useRecoilValue(userInfoState);
+  const navigate = useNavigate();
 
   return (
     <S.Layout>
@@ -28,7 +30,7 @@ function UserInfoBox({ userInfo, setUserInfo }: UserInfoBoxProps) {
       {userInfo?.type === "CUSTOMER" && <CustomerInfoBox userInfo={userInfo} />}
       {userInfo?.type === "STORE" && <StoreInfoBox userInfo={userInfo} />}
       {userInfo?.id === user?.id && (
-        <S.Button>
+        <S.Button onClick={() => navigate("/feed/newFeed")}>
           <Text text="추가" pointer={true} />
         </S.Button>
       )}

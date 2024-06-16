@@ -11,6 +11,7 @@ export const SelectBox = styled.div`
   align-items: center;
   display: flex;
   box-sizing: border-box;
+  margin-top: 10px;
   background-color: ${colors.purple._50};
 `;
 
