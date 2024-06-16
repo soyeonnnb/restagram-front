@@ -14,6 +14,9 @@ export const Square = styled.div`
   align-items: center;
   aspect-ratio: 1 / 1;
   border: 1px solid #ddd;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Image = styled.img`

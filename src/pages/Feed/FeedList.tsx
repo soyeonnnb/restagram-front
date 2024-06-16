@@ -17,34 +17,6 @@ function FeedList() {
   const [hasNext, setHasNext] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const toggleIsLike = (id: number, isLike: boolean) => {
-    if (feedList.some((feed) => feed.id === id)) {
-      const updatedFeedList = feedList.map((feed) => {
-        if (feed.id === id) {
-          return {
-            ...feed,
-            isLike: isLike, // 토글하기
-          };
-        }
-        return feed;
-      });
-
-      setFeedList(updatedFeedList); // 상태 업데이트
-    }
-  };
-
-  const handleIsLike = (id: number, isLike: boolean) => {
-    if (isLike) {
-      customAxios.delete(`/feed/like/${id}`).then(() => {
-        toggleIsLike(id, !isLike);
-      });
-    } else {
-      customAxios.post(`/feed/like/${id}`).then(() => {
-        toggleIsLike(id, !isLike);
-      });
-    }
-  };
-
   const fetchData = () => {
     setIsLoading(true);
     customAxios

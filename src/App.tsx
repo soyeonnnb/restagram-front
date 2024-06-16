@@ -23,6 +23,7 @@ import ReservationFormList from "./pages/Store/ReservationFormList";
 import ReservationForm from "./pages/Store/ReservationForm";
 import CustomerReservationForm from "./pages/Customer/ReservationForm";
 import FeedForm from "./pages/Feed/FeedForm";
+import UserFeedList from "./pages/Feed/UserFeedList";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             />
           </Route>
           <Route path="feed/newFeed" element={<FeedForm />} />
+          <Route path="feed/user/:userId" element={<UserFeedList />} />
           <Route path="feed/:userId" element={<UserFeed />} />
           <Route path="dm" element={<DM />} />
           <Route path="notification" element={<Notification />} />
