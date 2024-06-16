@@ -1,55 +1,91 @@
+import { useEffect, useState } from "react";
 import RCHeader from "../../components/Customer/RCHeader";
 import customAxios from "../../utils/customAxios";
 import * as S from "./MyReservation.styles";
+import { CustomerReservationInterface } from "../../interfaces/ReservationInterfaces";
+import { useInView } from "react-intersection-observer";
+import CustomerBottom from "../../components/Common/Bottom/CustomerBottom";
+import { PaginationResponse } from "../../interfaces/CommonInterfaces";
+import ReservationComponent from "../../components/Reservation/Customer/ReservationComponent";
 
 function MyReservation() {
-  const handleReservation = () => {
-    const body = {
-      headCount: 4,
-      reservationFormId: 23,
-      name: "소연",
-      phone: "01098765432",
-      memo: "조으네요",
-    };
+  const [reservationList, setReservationList] = useState<
+    CustomerReservationInterface[]
+  >([]);
+  const [hasNext, setHasNext] = useState<boolean>(true);
+  const [cursorId, setCursorId] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    customAxios
-      .post("/reservation", body)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  const handleDeleteReservation = () => {
+  const handleDeleteReservation = (id: number, memo: string) => {
     const body = {
-      reservationId: 49,
-      memo: "그냥 취소할래요",
+      reservationId: id,
+      memo,
       state: "CUSTOMER",
     };
 
     customAxios
       .patch("/reservation", body)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        setReservationList((preList) =>
+          preList.map((reservation) =>
+            reservation.reservation.id === id
+              ? {
+                  ...reservation,
+                  reservation: {
+                    ...reservation.reservation,
+                    state: "USER_CANCELED",
+                    cancelMessage: memo,
+                  },
+                }
+              : reservation
+          )
+        );
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
+  const fetchData = () => {
+    setIsLoading(true);
+    customAxios
+      .get(`/reservation/customer?cursor-id=${cursorId ? cursorId : ""}`)
+      .then((res) => res.data.data)
+      .then((data: PaginationResponse<CustomerReservationInterface>) => {
+        setCursorId(data.cursorId);
+        setHasNext(data.hasNext);
+        const updateList = [...reservationList, ...data.list];
+        setReservationList(updateList);
+      })
+      .then(() => setIsLoading(false));
+  };
+
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (!inView) return;
+    if (!isLoading && hasNext) {
+      fetchData();
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <RCHeader type="reservation" />
       <S.Layout>
-        MyReservation
-        <S.Button onClick={() => handleReservation()}>
-          예약 테스트 버튼
-        </S.Button>
-        <S.Button onClick={() => handleDeleteReservation()}>
-          예약 삭제 테스트 버튼
-        </S.Button>
+        <S.Ul>
+          {reservationList.map((re, idx) => (
+            <ReservationComponent
+              reservation={re}
+              key={idx}
+              handleDeleteReservation={handleDeleteReservation}
+            />
+          ))}
+        </S.Ul>
+        <S.Observer ref={ref} />
       </S.Layout>
     </>
   );

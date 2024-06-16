@@ -6,9 +6,15 @@ export const Layout = styled.div`
 
 export const Button = styled.div`
   padding: 20px;
-  background-color: bisque;
   border-radius: 2px;
   &:hover {
     cursor: pointer;
   }
+`;
+export const Observer = styled.div`
+  width: 100%;
+  height: 20px;
+`;
+export const Ul = styled.ul`
+  padding: 20px 30px;
 `;

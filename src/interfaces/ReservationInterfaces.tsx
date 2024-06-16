@@ -1,3 +1,5 @@
+import { StoreInfoInterface } from "./UserInterfaces";
+
 export type StoreReservationInterface = {
   customerId: number;
   customerNickname: string;
@@ -38,4 +40,9 @@ export type GroupedReservationForm = {
       [date: number]: ReservationFormInterface[];
     };
   };
+};
+
+export type CustomerReservationInterface = {
+  store: StoreInfoInterface;
+  reservation: ReservationInfoInterface;
 };

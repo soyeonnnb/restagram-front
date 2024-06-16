@@ -18,7 +18,7 @@ export interface FeedImageInterface {
 
 export interface FeedListInterface {
   cursorId: number;
-  feeds: FeedInterface[];
+  list: FeedInterface[];
   hasNext: boolean;
 }
 
@@ -30,6 +30,6 @@ export interface UserFeedImageInterface {
 
 export interface FeedImageCursorInterface {
   cursorId: number;
-  images: UserFeedImageInterface[];
+  list: UserFeedImageInterface[];
   hasNext: boolean;
 }

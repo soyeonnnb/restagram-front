@@ -75,7 +75,7 @@ function Search() {
       .then((data: FeedListInterface) => {
         setFeedCursorId(data.cursorId);
         setFeedHasNext(data.hasNext);
-        const transformData = data.feeds.map((feed: FeedInterface) => {
+        const transformData = data.list.map((feed: FeedInterface) => {
           return {
             ...feed,
             time: feed.time instanceof Date ? feed.time : new Date(feed.time),

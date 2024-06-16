@@ -53,7 +53,7 @@ function FeedList() {
       .then((data: FeedListInterface) => {
         setCursorId(data.cursorId);
         setHasNext(data.hasNext);
-        const transformData = data.feeds.map((feed: FeedInterface) => {
+        const transformData = data.list.map((feed: FeedInterface) => {
           return {
             ...feed,
             time: feed.time instanceof Date ? feed.time : new Date(feed.time),

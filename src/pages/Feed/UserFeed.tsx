@@ -44,7 +44,7 @@ function UserFeed() {
       .then((data: FeedImageCursorInterface) => {
         setCursorId(data.cursorId);
         setHasNext(data.hasNext);
-        setFeedList([...feedList, ...data.images]);
+        setFeedList([...feedList, ...data.list]);
       })
       .then(() => setIsLoading(false));
   };
