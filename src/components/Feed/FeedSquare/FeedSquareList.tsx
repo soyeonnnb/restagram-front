@@ -1,6 +1,5 @@
 import { UserFeedImageInterface } from "../../../interfaces/FeedInterfaces";
 import * as S from "./FeedSquareList.styles";
-import Logo from "../../../assets/images/logo.png";
 import { useNavigate, useParams } from "react-router-dom";
 
 interface FeedSquareListProps {

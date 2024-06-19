@@ -1,4 +1,4 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import * as S from "./AddressSearch.styles";
 import {
   addressListState,
@@ -11,13 +11,12 @@ import {
 } from "../../interfaces/AddressInterfaces";
 import { useEffect, useState } from "react";
 import Text from "../Common/Text";
-import Modal from "../Common/Modal";
 import AddressSearchBox from "./AddressSearchBox";
 import colors from "../Common/colors";
 
 function AddressSearch({ handleInit }: { handleInit: () => void }) {
   const [addressList, setAddressList] = useRecoilState(addressListState);
-  const [searchAddress, setSearchAddress] = useRecoilState(searchAddressState);
+  const searchAddress = useRecoilValue(searchAddressState);
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const fetchAddressData = () => {

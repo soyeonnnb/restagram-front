@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import * as S from "./ExceptDate.styles";
 import Text from "../../../Common/Text";
 import { ReactComponent as CancelButton } from "../../../../assets/icons/circle-x.svg";
-import colors from "../../../Common/colors";
 
 interface ExceptDateProps {
   date: Date;

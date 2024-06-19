@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import FeedImage from "./FeedImage";
 import FeedButton from "./Bottom/FeedButton";
 import Description from "./Bottom/Description";
-import customAxios from "../../utils/customAxios";
 
 interface FeedProps {
   feed: FeedInterface;

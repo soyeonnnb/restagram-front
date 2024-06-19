@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Header.styles";
-import { ReactComponent as NotificationIcon } from "../../assets/icons/notifications.svg";
-import { ReactComponent as DMIcon } from "../../assets/icons/paper-plane.svg";
+// import { ReactComponent as NotificationIcon } from "../../assets/icons/notifications.svg";
+// import { ReactComponent as DMIcon } from "../../assets/icons/paper-plane.svg";
 import { ReactComponent as SettingIcon } from "../../assets/icons/settings.svg";
 import colors from "./colors";
 import LogoImage from "../../assets/images/logo.png";

@@ -1,4 +1,3 @@
-import Input from "../../components/Common/Form/Input";
 import LabelInput from "../../components/Common/Form/LabelInput";
 import LabelButtonInput from "../../components/Common/Form/LabelButtonInput";
 import * as S from "./StoreSignup.styles";
@@ -6,10 +5,9 @@ import LogoImage from "../../assets/images/logo.png";
 
 import { ReactComponent as BackIcon } from "../../assets/icons/chevron-back.svg";
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import customAxios from "../../utils/customAxios";
-import { useRecoilTransaction_UNSTABLE } from "recoil";
 import DaumPost from "../../components/User/DaumPost";
 import SearchLatLngByAddress from "../../components/User/SearchLatLngByAddress";
 

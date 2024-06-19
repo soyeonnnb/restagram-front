@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import colors from "../colors";
 
 export const Box = styled.div`
   margin: 14px 0;

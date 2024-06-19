@@ -1,5 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-import { useNavigate } from "react-router-dom";
 
 const customAxios: AxiosInstance = axios.create({
   baseURL: `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}/api/v1`, // 기본 서버 주소 입력

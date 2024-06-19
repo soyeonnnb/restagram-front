@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import * as S from "./SelectDate.styles";
 import { ReactComponent as PrevArrowIcon } from "../../assets/icons/chevron-back.svg";
 import { ReactComponent as NextArrowIcon } from "../../assets/icons/chevron-forward.svg";

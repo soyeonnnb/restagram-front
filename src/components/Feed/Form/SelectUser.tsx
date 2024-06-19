@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import SearchBox from "../../Common/Form/SearchBox";
 import * as S from "./SelectUser.styles";
-import Text from "../../Common/Text";
 import { StoreInfoInterface } from "../../../interfaces/UserInterfaces";
 import customAxios from "../../../utils/customAxios";
 import { PaginationResponse } from "../../../interfaces/CommonInterfaces";

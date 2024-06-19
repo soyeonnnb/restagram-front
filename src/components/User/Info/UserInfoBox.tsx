@@ -7,7 +7,6 @@ import Text from "../../Common/Text";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "../../../recoil/UserRecoil";
 import Profile from "./Profile";
-import userEvent from "@testing-library/user-event";
 import CustomerInfoBox from "./CustomerInfoBox";
 import StoreInfoBox from "./StoreInfoBox";
 import { Dispatch, SetStateAction } from "react";

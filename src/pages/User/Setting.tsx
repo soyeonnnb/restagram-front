@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Setting.styles";
 import Title from "../../components/Common/Title";
-import { ReactComponent as InfoIcon } from "../../assets/icons/circle-check.svg";
+// import { ReactComponent as InfoIcon } from "../../assets/icons/circle-check.svg";
 import { useState } from "react";
 import Toggle from "react-toggle";
 import "../../assets/styles/react-toggle.css";

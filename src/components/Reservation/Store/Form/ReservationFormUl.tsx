@@ -1,14 +1,12 @@
-import { useEffect } from "react";
 import { ReservationFormInterface } from "../../../../interfaces/ReservationInterfaces";
 import Text from "../../../Common/Text";
 import * as S from "./ReservationFormUl.styles";
-import colors from "../../../Common/colors";
 
-interface ReservationFormUl {
+interface ReservationFormUlProps {
   list: ReservationFormInterface[];
 }
 
-function ReservationFormUl({ list }: ReservationFormUl) {
+function ReservationFormUl({ list }: ReservationFormUlProps) {
   return (
     <S.Ul>
       {list.map((form: ReservationFormInterface, idx: number) => (

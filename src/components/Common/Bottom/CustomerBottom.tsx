@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Bottom.styles";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { userInfoState } from "../../../recoil/UserRecoil";
-import { Component, useEffect, useState } from "react";
 
 import { ReactComponent as FeedIcon } from "../../../assets/icons/grid.svg";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
@@ -38,13 +37,13 @@ function CustomerBottom() {
 
 export default CustomerBottom;
 
-interface NavBox {
+interface NavBoxProps {
   Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   url: string;
   handleNavigate: (url: string) => void;
 }
 
-const NavBox = ({ Icon, url, handleNavigate }: NavBox) => {
+const NavBox = ({ Icon, url, handleNavigate }: NavBoxProps) => {
   return (
     <S.Box onClick={() => handleNavigate(url)}>
       <Icon className="icon" width={24} height={24} fill={colors.blue._900} />

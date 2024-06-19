@@ -1,8 +1,5 @@
 import { useEffect } from "react";
-import {
-  GroupedStoreReservation,
-  StoreReservationInterface,
-} from "../../../interfaces/ReservationInterfaces";
+import { StoreReservationInterface } from "../../../interfaces/ReservationInterfaces";
 import * as S from "./ReservationUl.styles";
 import Text from "../../Common/Text";
 import ReservationRow from "./ReservationRow";

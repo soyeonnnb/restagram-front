@@ -8,13 +8,9 @@ import {
 } from "../../interfaces/ReservationInterfaces";
 import customAxios from "../../utils/customAxios";
 import ReservationUl from "../../components/Reservation/Store/ReservationUl";
-import colors from "../../components/Common/colors";
-import { useNavigate } from "react-router-dom";
 import Toggle from "../../components/Reservation/Store/Form/Toggle";
 
 function ReservationList() {
-  const navigate = useNavigate();
-
   const [cancelFilter, setCancelFilter] = useState<boolean>(false);
   const [year, setYear] = useState<number>(new Date().getFullYear());
   const [month, setMonth] = useState<number>(new Date().getMonth() + 1);

@@ -1,12 +1,12 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import CustomerBottom from "../Common/Bottom/CustomerBottom";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "../../recoil/UserRecoil";
 import { useEffect } from "react";
 
 function CustomerRoute() {
-  const user = useRecoilValue(userInfoState);
   const navigate = useNavigate();
+
+  const user = useRecoilValue(userInfoState);
 
   useEffect(() => {
     if (user) {

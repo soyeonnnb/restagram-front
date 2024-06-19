@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   addressListState,
@@ -8,11 +8,9 @@ import * as S from "./AddressSearchBox.styles";
 import Text from "../Common/Text";
 import colors from "../Common/colors";
 import {
-  AddressInterface,
   GroupedAddress,
   SearchAddressInterface,
 } from "../../interfaces/AddressInterfaces";
-import { AddressInfo } from "net";
 
 type AddressSearchBoxProps = {
   setShow: Dispatch<SetStateAction<boolean>>;

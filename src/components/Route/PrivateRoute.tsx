@@ -1,12 +1,11 @@
 import { useLocation } from "react-router";
-import { Navigate, Outlet, useSearchParams } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 // import useGetIsLogin from "../../hooks/useGetIsLogin";
 import * as S from "./PrivateRoute.styles";
 import Header from "../Common/Header";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "../../recoil/UserRecoil";
-import { log } from "console";
 import CustomerBottom from "../Common/Bottom/CustomerBottom";
 import StoreBottom from "../Common/Bottom/StoreBottom";
 

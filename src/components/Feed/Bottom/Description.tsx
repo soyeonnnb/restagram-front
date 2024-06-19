@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import * as S from "./Description.styles";
 
 interface DescriptionProps {

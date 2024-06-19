@@ -1,13 +1,10 @@
 import * as S from "./UserFeed.styles";
-import CustomerInfoBox from "../../components/User/Info/CustomerInfoBox";
-import StoreInfoBox from "../../components/User/Info/StoreInfoBox";
 import { useEffect, useState } from "react";
 import customAxios from "../../utils/customAxios";
 import { useParams } from "react-router-dom";
 import {
   FeedCustomerInfoInterface,
   FeedStoreInfoInterface,
-  FeedUserInfoInterface,
 } from "../../interfaces/UserInterfaces";
 import {
   FeedImageCursorInterface,

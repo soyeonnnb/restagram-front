@@ -1,9 +1,5 @@
 import { FeedCustomerInfoInterface } from "../../../interfaces/UserInterfaces";
-import UserInfoBox from "./UserInfoBox";
 import * as O from "./Overview.styles";
-import Text from "../../Common/Text";
-import { useRecoilValue } from "recoil";
-import { userInfoState } from "../../../recoil/UserRecoil";
 import Overview from "./Overview";
 
 interface CustomerInfoBoxProps {
