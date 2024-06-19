@@ -25,17 +25,17 @@ function StoreBottom() {
         url={`/feed/${userInfo?.id}`}
         handleNavigate={handleNavigate}
       />
-      <NavBox Icon={ChatIcon} url="/dm" handleNavigate={handleNavigate} />
+      {/* <NavBox Icon={ChatIcon} url="/dm" handleNavigate={handleNavigate} /> */}
       <NavBox
         Icon={ReservationIcon}
         url="/store/reservation"
         handleNavigate={handleNavigate}
       />
-      <NavBox
+      {/* <NavBox
         Icon={CouponIcon}
         url="/store/coupon"
         handleNavigate={handleNavigate}
-      />
+      /> */}
     </S.Layout>
   );
 }

@@ -4,7 +4,7 @@ interface InputProps {
   placeholder: string;
   type: string;
   name: string;
-  value?: any;
+  value?: number | string;
   setValue: any;
   disable?: boolean;
   verifyText?: string;
@@ -21,16 +21,12 @@ const Input = ({
   verifyText,
   verifyTextColor,
 }: InputProps) => {
-  const handleInputChange = (event: any) => {
-    setValue(event.target.value);
-  };
-
   return (
     <S.Box>
       <S.Input
         placeholder={placeholder}
         type={type ? type : "text"}
-        onChange={handleInputChange}
+        onChange={(event: any) => setValue(event.target.value)}
         disabled={disable}
         value={value}
       />

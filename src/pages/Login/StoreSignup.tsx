@@ -6,7 +6,7 @@ import LogoImage from "../../assets/images/logo.png";
 
 import { ReactComponent as BackIcon } from "../../assets/icons/chevron-back.svg";
 
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import customAxios from "../../utils/customAxios";
 import { useRecoilTransaction_UNSTABLE } from "recoil";
@@ -27,6 +27,8 @@ function StoreSignup() {
   const [bcode, setBcode] = useState<number>(0);
   const [address, setAddress] = useState<string>("");
   const [detailAddress, setDetailAddress] = useState<string>("");
+  const [tablePerson, setTablePerson] = useState<number>(0);
+  const [maxReservationPerson, setMaxReservationPerson] = useState<number>(0);
 
   const [checkEmail, setCheckEmail] = useState<boolean | null>(true);
   const [checkNickname, setCheckNickname] = useState<boolean | null>(null);
@@ -42,11 +44,15 @@ function StoreSignup() {
   const [checkAddressText, setCheckAddressText] = useState<string>("");
   const [checkDetailAddressText, setCheckDetailAddressText] =
     useState<string>("");
+  const [checkTablePersonText, setCheckTablePersonText] = useState<string>("");
+  const [checkMaxReservationPersonText, setCheckMaxReservationPersonText] =
+    useState<string>("");
 
   const [showPost, setShowPost] = useState<boolean>(false);
 
   const handleDuplicateEmail = () => {
-    let reg = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    let reg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+    console.log(email);
     if (!reg.test(email)) {
       setCheckEmailText("이메일 형식이 아닙니다.");
       return;
@@ -156,6 +162,22 @@ function StoreSignup() {
       setCheckDetailAddressText("");
     }
 
+    if (tablePerson < 1) {
+      setCheckTablePersonText("테이블 당 인원수는 1 이상이여야 합니다.");
+      flag = true;
+    } else {
+      setCheckTablePersonText("");
+    }
+
+    if (maxReservationPerson < 0 || maxReservationPerson > 20) {
+      setCheckMaxReservationPersonText(
+        "최대 예약 인원수는 0 이상 20 이하여야 합니다."
+      );
+      flag = true;
+    } else {
+      setCheckMaxReservationPersonText("");
+    }
+
     if (flag) return;
 
     const { latitude, longitude } = await SearchLatLngByAddress(address);
@@ -173,6 +195,8 @@ function StoreSignup() {
       detailAddress,
       latitude,
       longitude,
+      tablePerson,
+      maxReservationPerson,
     };
 
     customAxios.post(`/store/join`, data).then(() => {
@@ -296,6 +320,22 @@ function StoreSignup() {
             name="detailAddress"
             setValue={setDetailAddress}
             verifyText={checkDetailAddressText}
+          />
+          <LabelInput
+            placeholder=""
+            label="테이블 당 인원수"
+            type="number"
+            name="tablePerson"
+            setValue={setTablePerson}
+            verifyText={checkTablePersonText}
+          />
+          <LabelInput
+            placeholder=""
+            label="최대 예약 인원수"
+            type="number"
+            name="maxReservationPerson"
+            setValue={setMaxReservationPerson}
+            verifyText={checkMaxReservationPersonText}
           />
           <S.Button onClick={() => handleSignup()}>
             <S.ButtonText>회원가입</S.ButtonText>
