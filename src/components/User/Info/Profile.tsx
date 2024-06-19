@@ -33,9 +33,7 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
     }
   };
 
-  useEffect(() => {
-    console.log(userInfo);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <S.Layout>
@@ -55,9 +53,9 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
                   <Text text="팔로우" size="0.9rem" pointer={true} />
                 </S.Button>
               )}
-              <S.Button>
+              {/* <S.Button>
                 <Text text="DM" size="0.9rem" pointer={true} />
-              </S.Button>
+              </S.Button> */}
             </>
           )}
         </S.BoxComponent>

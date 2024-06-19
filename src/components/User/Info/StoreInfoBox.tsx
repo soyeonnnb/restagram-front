@@ -57,9 +57,9 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
       </O.Ul>
       {user?.id !== userInfo.id && (
         <S.BottomBox>
-          <S.Button>
+          {/* <S.Button>
             <Text text="쿠폰발급" pointer={true} size="0.9rem" />
-          </S.Button>
+          </S.Button> */}
           <S.Button onClick={() => navigate(`/reservation/${userInfo?.id}`)}>
             <Text text="예약" pointer={true} size="0.9rem" />
           </S.Button>

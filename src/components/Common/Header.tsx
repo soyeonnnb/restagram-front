@@ -18,7 +18,7 @@ function Header() {
         <S.Image src={LogoImage} />
       </S.LeftBox>
       <S.RightBox>
-        <S.Box onClick={() => navigate("/notification")}>
+        {/* <S.Box onClick={() => navigate("/notification")}>
           <NotificationIcon
             className="icon"
             width={ICON_SIZE}
@@ -33,7 +33,7 @@ function Header() {
             height={ICON_SIZE}
             fill={ICON_COLOR}
           />
-        </S.Box>
+        </S.Box> */}
         <S.Box onClick={() => navigate("/setting")}>
           <SettingIcon
             className="icon"
