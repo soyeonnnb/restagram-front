@@ -15,7 +15,9 @@ function Login() {
       <S.LogoImage src={Logo} alt="로고 이미지" />
       <S.SocialLoginButton
         onClick={() =>
-          navigateTo("http://localhost:8080/oauth2/authorization/kakao")
+          navigateTo(
+            `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}/oauth2/authorization/kakao`
+          )
         }
       >
         <KakaoLogo width={20} height={20} fill="#000000" />
