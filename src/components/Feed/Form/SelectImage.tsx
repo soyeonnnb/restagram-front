@@ -17,20 +17,32 @@ function SelectImage({
   open,
 }: SelectImageProps) {
   const handleChangeFile = (event: any) => {
-    const inputs: File[] = Array.from(event.target.files || []);
-    if (inputs.length > 10) {
+    const files: File[] = Array.from(event.target.files || []);
+
+    // 최대 10개 파일 체크
+    if (files.length > 10) {
       alert("이미지는 최대 10개까지 선택 가능합니다.");
       return;
     }
-    const allFilesAreValid = inputs.every(
-      (file) => file.type === "image/png" || file.type === "image/jpeg"
-    );
 
-    if (!allFilesAreValid) {
-      alert("이미지 파일만 등록 가능합니다.");
-      return;
-    }
-    setFileList(inputs);
+    // 유효한 이미지 파일인지 확인하는 함수
+    const isValidImageFile = (file: File): boolean =>
+      file.type === "image/png" || file.type === "image/jpeg";
+
+    // 10MB 이하인 파일만 선택
+    const validFiles: File[] = files.filter((file: File) => {
+      const isUnder10MB: boolean = file.size <= 10 * 1024 * 1024; // 10MB 이하인지 확인
+      const isValidType: boolean = isValidImageFile(file); // 이미지 파일인지 확인
+
+      if (!isUnder10MB) {
+        alert(`10MB 이하의 파일만 업로드할 수 있습니다.`);
+      }
+
+      return isUnder10MB && isValidType;
+    });
+
+    // 유효한 파일들로 리스트 업데이트
+    setFileList(validFiles);
     setOpen(3);
   };
   useEffect(() => {

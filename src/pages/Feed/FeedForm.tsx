@@ -9,8 +9,11 @@ import FeedInput from "../../components/Feed/Form/FeedInput";
 import { StoreInfoInterface } from "../../interfaces/UserInterfaces";
 import SelectStoreCard from "../../components/Feed/Form/SelectStoreCard";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function FeedForm() {
+  const navigate = useNavigate();
+
   const userInfo = useRecoilValue(userInfoState);
   const [store, setStore] = useState<StoreInfoInterface | null>(null);
   const [open, setOpen] = useState<number>(0);
@@ -52,14 +55,16 @@ function FeedForm() {
       formData.append("images", file);
     });
 
-    axios.post(
-      `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}/api/v1/feed`,
-      formData,
-      {
-        // headers: { "Content-Type": "multipart/form-data", charset: "utf-8" },
-        withCredentials: true,
-      }
-    );
+    axios
+      .post(
+        `${process.env.REACT_APP_LOCAL_SERVER_ADDRESS}/api/v1/feed`,
+        formData,
+        {
+          // headers: { "Content-Type": "multipart/form-data", charset: "utf-8" },
+          withCredentials: true,
+        }
+      )
+      .then(() => navigate(`/feed/${userInfo?.id}`));
   };
 
   return (

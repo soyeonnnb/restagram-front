@@ -45,7 +45,9 @@ function FeedList() {
 
   return (
     <S.Layout>
-      <FeedListComponent feedList={feedList} setFeedList={setFeedList} />
+      {feedList && (
+        <FeedListComponent feedList={feedList} setFeedList={setFeedList} />
+      )}
       <S.Observer ref={ref} />
     </S.Layout>
   );

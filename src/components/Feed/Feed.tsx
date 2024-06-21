@@ -25,7 +25,7 @@ function Feed({ feed, handleIsLike }: FeedProps) {
   return (
     <S.Layout ref={layoutRef}>
       <UserInfo user={feed.user} />
-      <FeedImage images={feed.images} width={width} />
+      {width && <FeedImage images={feed.images} width={width} />}
       <FeedButton
         id={feed.id}
         isLike={feed.isLike}
