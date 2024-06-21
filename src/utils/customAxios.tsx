@@ -26,7 +26,7 @@ customAxios.interceptors.response.use(
           } catch (error) {
             console.error("Error during reissue:", error);
             // 재로그인 실패 시 로그아웃 후 로그인 페이지로 리다이렉트
-            // window.location.href = "/logout";
+            window.location.href = "/logout";
             return Promise.reject(error);
           }
         default:
