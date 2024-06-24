@@ -38,3 +38,9 @@ export const Button = styled.div`
     border-color: ${colors.purple._100};
   }
 `;
+
+export const StoreButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
