@@ -11,6 +11,7 @@ export const TextBox = styled.div`
   position: sticky;
   top: 155px;
   background-color: white;
+  z-index: 10;
 `;
 export const Ul = styled.ul`
   width: 100%;
