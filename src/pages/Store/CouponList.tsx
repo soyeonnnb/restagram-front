@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Text from "../../components/Common/Text";
 import ToggleHeader from "../../components/Coupon/ToggleHeader";
 import * as S from "./CouponList.styles";
@@ -8,9 +8,13 @@ import { StoreCouponInterface } from "../../interfaces/CouponInterfaces";
 import customAxios from "../../utils/customAxios";
 import { useInView } from "react-intersection-observer";
 import { PaginationResponse } from "../../interfaces/CommonInterfaces";
+import { ReactComponent as PlusButton } from "../../assets/icons/plus-square.svg";
+import colors from "../../components/Common/colors";
+import { useNavigate } from "react-router-dom";
 
 function CouponList() {
   const user = useRecoilValue(userInfoState);
+  const navigate = useNavigate();
   const [couponList, setCouponList] = useState<StoreCouponInterface[]>([]);
   const [finishCouponList, setFinishCouponList] = useState<
     StoreCouponInterface[]
@@ -88,9 +92,16 @@ function CouponList() {
       fetchFinishData();
     }
   }, [inView]);
+
   return (
     <S.Layout>
       <ToggleHeader type={type} setType={setType} />
+      <S.AddBox>
+        <S.AddButton onClick={() => navigate("/store/coupon/form")}>
+          <PlusButton stroke={colors.blue._500} width={20} height={20} />
+          <Text text="쿠폰 추가" marginl={10} pointer />
+        </S.AddButton>
+      </S.AddBox>
       <S.Main>
         <S.Ul>
           {type === "PROCEED" &&
@@ -174,7 +185,6 @@ const CouponBox = ({ coupon, handleDisableCoupon, type }: CouponBoxProps) => {
             size="0.9rem"
           />
         </S.TextBox>
-
         <S.TextBox>
           <Text text="사용개수" marginr={10} size="0.9rem" weight={500} />
           <Text text={`${coupon.useQuantity}개`} size="0.9rem" />

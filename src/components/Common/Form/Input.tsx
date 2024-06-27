@@ -9,6 +9,8 @@ interface InputProps {
   disable?: boolean;
   verifyText?: string;
   verifyTextColor?: string;
+  min?: string;
+  max?: string;
 }
 
 const Input = ({
@@ -20,6 +22,8 @@ const Input = ({
   value,
   verifyText,
   verifyTextColor,
+  min,
+  max,
 }: InputProps) => {
   return (
     <S.Box>
@@ -29,6 +33,8 @@ const Input = ({
         onChange={(event: any) => setValue(event.target.value)}
         disabled={disable}
         value={value}
+        min={min}
+        max={max}
       />
       {verifyText && (
         <S.VerifyText color={verifyTextColor}>{verifyText}</S.VerifyText>

@@ -23,6 +23,7 @@ import ReservationForm from "./pages/Store/ReservationForm";
 import CustomerReservationForm from "./pages/Customer/ReservationForm";
 import FeedForm from "./pages/Feed/FeedForm";
 import UserFeedList from "./pages/Feed/UserFeedList";
+import CouponForm from "./pages/Store/CouponForm";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="reservation/form" element={<ReservationFormList />} />
             <Route path="reservation/form/add" element={<ReservationForm />} />
             <Route path="coupon" element={<CouponList />} />
+            <Route path="coupon/form" element={<CouponForm />} />
           </Route>
           <Route element={<CustomerRoute />}>
             <Route path="/" element={<FeedList />} />

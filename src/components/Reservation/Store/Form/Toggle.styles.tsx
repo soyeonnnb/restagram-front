@@ -7,7 +7,6 @@ export const ToggleButtonBox = styled.div<{ width: number }>`
   display: flex;
   height: 0px;
   justify-content: end;
-  position: relative;
   position: fixed;
   bottom: 50px;
 `;

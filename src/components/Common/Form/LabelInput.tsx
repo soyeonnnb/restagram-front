@@ -10,6 +10,8 @@ interface LabelInputProps {
   verifyText?: string;
   verifyTextColor?: string;
   value?: string | number;
+  min?: string;
+  max?: string;
 }
 
 const LabelInput = ({
@@ -21,6 +23,8 @@ const LabelInput = ({
   verifyText,
   verifyTextColor,
   value,
+  min,
+  max,
 }: LabelInputProps) => {
   return (
     <S.Box>
@@ -33,6 +37,8 @@ const LabelInput = ({
         verifyText={verifyText}
         verifyTextColor={verifyTextColor}
         value={value}
+        min={min}
+        max={max}
       />
     </S.Box>
   );
