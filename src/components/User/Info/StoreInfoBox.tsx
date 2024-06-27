@@ -55,8 +55,11 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
   };
 
   useEffect(() => {
-    fetchCouponData();
-  }, []);
+    if (!user) return;
+    if (user.type === "CUSTOMER") {
+      fetchCouponData();
+    }
+  }, [user]);
 
   return (
     <S.Layout>
@@ -94,7 +97,7 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
         <Overview number={userInfo.reviewNum} description="리뷰수" />
         <Overview number={userInfo.followingNum} description="팔로잉" />
       </O.Ul>
-      {user?.id !== userInfo.id && (
+      {user?.type === "CUSTOMER" && user?.id !== userInfo.id && (
         <S.StoreButtonBox>
           <S.BottomBox>
             <S.Button onClick={() => setCouponModal(true)}>

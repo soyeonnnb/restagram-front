@@ -7,7 +7,7 @@ import { userInfoState } from "../../../recoil/UserRecoil";
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home.svg";
 import { ReactComponent as ReservationIcon } from "../../../assets/icons/order.svg";
 // import { ReactComponent as ChatIcon } from "../../../assets/icons/chat-bubble.svg";
-// import { ReactComponent as CouponIcon } from "../../../assets/icons/ticket.svg";
+import { ReactComponent as CouponIcon } from "../../../assets/icons/coupon.svg";
 import colors from "../colors";
 
 function StoreBottom() {
@@ -31,11 +31,11 @@ function StoreBottom() {
         url="/store/reservation"
         handleNavigate={handleNavigate}
       />
-      {/* <NavBox
+      <NavBox
         Icon={CouponIcon}
         url="/store/coupon"
         handleNavigate={handleNavigate}
-      /> */}
+      />
     </S.Layout>
   );
 }

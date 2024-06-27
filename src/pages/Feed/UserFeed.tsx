@@ -15,7 +15,7 @@ import { useInView } from "react-intersection-observer";
 import UserInfoBox from "../../components/User/Info/UserInfoBox";
 
 function UserFeed() {
-  const userId = useParams().userId;
+  const { userId } = useParams<{ userId: string }>();
   const [userInfo, setUserInfo] = useState<
     FeedStoreInfoInterface | FeedCustomerInfoInterface | null
   >(null);
@@ -56,6 +56,14 @@ function UserFeed() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    fetchData();
+    setFeedList([]);
+    setCursorId(null);
+    setHasNext(true);
+    setIsLoading(false);
+  }, [userId]);
 
   return (
     <S.Layout>
