@@ -1,3 +1,5 @@
+import { StoreInfoInterface } from "./UserInterfaces";
+
 export interface StoreCouponInterface {
   id: number;
   startAt: Date;
@@ -21,4 +23,14 @@ export interface CustomerCouponInterface {
   payMoney: number;
   expiredMinute: number;
   isIssued: boolean;
+}
+export interface IssueCouponInterface {
+  id: number;
+  isUsed: boolean;
+  usedAt: Date;
+  qrImage: string;
+  expiredAt: Date;
+  discountMoney: number;
+  payMoney: number;
+  store: StoreInfoInterface;
 }
