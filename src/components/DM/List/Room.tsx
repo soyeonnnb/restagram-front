@@ -36,8 +36,6 @@ function Room({ room }: RoomProps) {
     handleTime();
   }, [room]);
 
-  const handleGoChat = () => {};
-
   return (
     <S.Layout onClick={() => navigate(`/dm/${room.receiver.id}`)}>
       <S.LeftSection>
@@ -50,7 +48,7 @@ function Room({ room }: RoomProps) {
         />
         <S.Main>
           <S.Nickname>
-            {room.receiver.type === "CUSTOMER" && (
+            {room.receiver.type === "STORE" && (
               <StoreIcon
                 className="icon"
                 width={15}

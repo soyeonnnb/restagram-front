@@ -49,7 +49,7 @@ function App() {
             />
           </Route>
           <Route path="dm" element={<DMList />} />
-          <Route path="dm/:id" element={<DMChat />} />
+          <Route path="dm/:userId" element={<DMChat />} />
           <Route path="feed/newFeed" element={<FeedForm />} />
           <Route path="feed/user/:userId" element={<UserFeedList />} />
           <Route path="feed/:userId" element={<UserFeed />} />
