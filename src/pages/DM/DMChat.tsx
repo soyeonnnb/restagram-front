@@ -68,7 +68,6 @@ const DMChat = () => {
   // 콜백함수 => ChatList 저장하기
   const callback = function (message: StompJs.Message) {
     if (message.body) {
-      console.log(message.body);
       const parseData = JSON.parse(message.body) as ChatMessageInterface;
       const newMessage = { ...parseData, time: new Date(parseData.time) };
       setChatList((prevChatList) => [...prevChatList, newMessage]);
