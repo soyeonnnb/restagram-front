@@ -1,5 +1,5 @@
 import * as S from "./DMChat.styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as StompJs from "@stomp/stompjs";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "../../recoil/UserRecoil";
@@ -17,6 +17,8 @@ import ChatList from "../../components/DM/Chat/ChatList";
 const DMChat = () => {
   const userInfo = useRecoilValue(userInfoState);
   const navigate = useNavigate();
+  const messageEndRef = useRef<HTMLDivElement | null>(null);
+  const [init, setInit] = useState<boolean>(true);
 
   const chatterId = Number(useParams().userId);
   const [chatter, setChatter] = useState<UserInfoInterface>();
@@ -65,6 +67,9 @@ const DMChat = () => {
       const parseData = JSON.parse(message.body) as ChatMessageInterface;
       const newMessage = { ...parseData, time: new Date(parseData.time) };
       setChatList((prevChatList) => [...prevChatList, newMessage]);
+      if (parseData.authorId === userInfo?.id) {
+        scrollEnd();
+      }
     }
   };
 
@@ -114,7 +119,6 @@ const DMChat = () => {
       destination: `/pub/chat`,
       body: JSON.stringify(body),
     });
-
     setMessage("");
   };
 
@@ -133,11 +137,30 @@ const DMChat = () => {
     fetchRoom();
   }, [userInfo, chatterId]);
 
+  useEffect(() => {
+    if (
+      init ||
+      (chatList.length > 0 &&
+        chatList[chatList.length - 1].authorId === userInfo?.id)
+    ) {
+      setInit(false);
+      scrollEnd();
+    }
+  }, [chatList]);
+
+  const scrollEnd = () => {
+    messageEndRef.current?.scrollIntoView();
+  };
+
   return (
     <S.Layout>
       {chatter && <ChatHeader user={chatter} />}
-      {chatter && <ChatList chatList={chatList} chatter={chatter} />}
-      {/* <S.Observer /> */}
+      {chatter && (
+        <>
+          <ChatList chatList={chatList} chatter={chatter} />
+          <S.Observer ref={messageEndRef} />
+        </>
+      )}
       <InputBox
         setMessage={setMessage}
         handleChat={handleChat}

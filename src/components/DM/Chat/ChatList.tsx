@@ -20,9 +20,11 @@ function ChatList({ chatList, chatter }: ChatListProps) {
       {userInfo &&
         chatList.map((chat, idx) => (
           <>
-            {userInfo.id === chat.authorId && <MyChatBubble chat={chat} />}
+            {userInfo.id === chat.authorId && (
+              <MyChatBubble chat={chat} key={idx} />
+            )}
             {userInfo.id !== chat.authorId && (
-              <OtherChatBubble chat={chat} chatter={chatter} />
+              <OtherChatBubble chat={chat} chatter={chatter} key={idx} />
             )}
           </>
         ))}

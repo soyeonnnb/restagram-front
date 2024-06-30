@@ -5,3 +5,5 @@ export const Layout = styled.div`
   position: relative;
   background-color: aliceblue;
 `;
+
+export const Observer = styled.div``;
