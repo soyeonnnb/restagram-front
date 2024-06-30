@@ -13,7 +13,6 @@ import Search from "./pages/Customer/Search";
 import MyReservation from "./pages/Customer/MyReservation";
 import MyCoupon from "./pages/Customer/MyCoupon";
 import UserFeed from "./pages/Feed/UserFeed";
-import DM from "./pages/User/DM";
 import Notification from "./pages/User/Notification";
 import ReservationList from "./pages/Store/ReservationList";
 import CouponList from "./pages/Store/CouponList";
@@ -24,6 +23,8 @@ import CustomerReservationForm from "./pages/Customer/ReservationForm";
 import FeedForm from "./pages/Feed/FeedForm";
 import UserFeedList from "./pages/Feed/UserFeedList";
 import CouponForm from "./pages/Store/CouponForm";
+import DMList from "./pages/DM/DMList";
+import DMChat from "./pages/DM/DMChat";
 
 function App() {
   return (
@@ -47,10 +48,11 @@ function App() {
               element={<CustomerReservationForm />}
             />
           </Route>
+          <Route path="dm" element={<DMList />} />
+          <Route path="dm/:id" element={<DMChat />} />
           <Route path="feed/newFeed" element={<FeedForm />} />
           <Route path="feed/user/:userId" element={<UserFeedList />} />
           <Route path="feed/:userId" element={<UserFeed />} />
-          <Route path="dm" element={<DM />} />
           <Route path="notification" element={<Notification />} />
           <Route path="setting" element={<Setting />} />
         </Route>

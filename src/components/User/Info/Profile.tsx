@@ -8,6 +8,7 @@ import {
 import Text from "../../Common/Text";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import customAxios from "../../../utils/customAxios";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileProps {
   userInfo: FeedCustomerInfoInterface | FeedStoreInfoInterface;
@@ -18,6 +19,7 @@ interface ProfileProps {
 
 function Profile({ userInfo, setUserInfo }: ProfileProps) {
   const user = useRecoilValue(userInfoState);
+  const navigate = useNavigate();
 
   const handleFollow = (follow: boolean) => {
     if (follow) {
@@ -32,6 +34,8 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
       });
     }
   };
+
+  const handleChat = () => {};
 
   useEffect(() => {}, []);
 
@@ -53,9 +57,9 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
                   <Text text="팔로우" size="0.9rem" pointer={true} />
                 </S.Button>
               )}
-              {/* <S.Button>
+              <S.Button onClick={() => handleChat()}>
                 <Text text="DM" size="0.9rem" pointer={true} />
-              </S.Button> */}
+              </S.Button>
             </>
           )}
         </S.BoxComponent>
