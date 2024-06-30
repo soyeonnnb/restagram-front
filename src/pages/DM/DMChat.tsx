@@ -13,12 +13,17 @@ import {
 import InputBox from "../../components/DM/Chat/InputBox";
 import ChatHeader from "../../components/DM/Chat/ChatHeader";
 import ChatList from "../../components/DM/Chat/ChatList";
+import Text from "../../components/Common/Text";
+
+import { ReactComponent as ArrowIcon } from "../../assets/icons/chevron-down.svg";
+import colors from "../../components/Common/colors";
 
 const DMChat = () => {
   const userInfo = useRecoilValue(userInfoState);
   const navigate = useNavigate();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
   const [init, setInit] = useState<boolean>(true);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const chatterId = Number(useParams().userId);
   const [chatter, setChatter] = useState<UserInfoInterface>();
@@ -138,19 +143,26 @@ const DMChat = () => {
   }, [userInfo, chatterId]);
 
   useEffect(() => {
-    if (
-      init ||
-      (chatList.length > 0 &&
-        chatList[chatList.length - 1].authorId === userInfo?.id)
-    ) {
-      setInit(false);
+    if (chatList.length === 0) return;
+    if (init || chatList[chatList.length - 1].authorId === userInfo?.id) {
       scrollEnd();
+    } else {
+      setShowModal(true);
     }
   }, [chatList]);
 
   const scrollEnd = () => {
+    setInit(false);
+    setShowModal(false);
     messageEndRef.current?.scrollIntoView();
   };
+
+  useEffect(() => {
+    if (!showModal) return;
+    setTimeout(() => {
+      setShowModal(false);
+    }, 5000);
+  }, [showModal]);
 
   return (
     <S.Layout>
@@ -160,6 +172,15 @@ const DMChat = () => {
           <ChatList chatList={chatList} chatter={chatter} />
           <S.Observer ref={messageEndRef} />
         </>
+      )}
+      {showModal && (
+        <S.Modal onClick={() => scrollEnd()}>
+          <S.ModalBox>
+            <ArrowIcon width={15} height={15} />
+            <Text text="새 메세지 보기" marginr={10} marginl={10} pointer />
+            <ArrowIcon width={15} height={15} fill={colors.black._400} />
+          </S.ModalBox>
+        </S.Modal>
       )}
       <InputBox
         setMessage={setMessage}
