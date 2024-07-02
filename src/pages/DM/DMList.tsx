@@ -20,7 +20,7 @@ const DMList = () => {
     // 소켓 연결
     try {
       const clientdata = new StompJs.Client({
-        brokerURL: "ws://localhost:8080/ws",
+        brokerURL: process.env.REACT_APP_WEBSOCKET_URL,
         debug: function (str) {
           console.log("debug: ", str);
         },
