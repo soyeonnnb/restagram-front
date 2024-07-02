@@ -5,6 +5,7 @@ export interface ChatRoomInterface {
   lastMessage: ChatMessageInterface;
   receiver: UserInfoInterface;
   createdAt: Date;
+  unReadMessageCount: number;
 }
 
 export interface ChatMessageInterface {

@@ -26,7 +26,7 @@ export const Main = styled.div`
 export const RightSection = styled.div`
   height: 50px;
   width: 20%;
-  padding: 5px 0;
+  padding: 3px 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -62,4 +62,10 @@ export const Message = styled.div`
   min-width: 0;
   width: 100%;
   z-index: 10;
+`;
+
+export const CountBox = styled.div`
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: ${colors.red._200};
 `;

@@ -3,7 +3,6 @@ import colors from "../../components/Common/colors";
 
 export const Layout = styled.div`
   position: relative;
-  background-color: aliceblue;
 `;
 
 export const Observer = styled.div``;
@@ -32,3 +31,5 @@ export const ModalBox = styled.div`
     cursor: pointer;
   }
 `;
+export const ChatList = styled.div``;
+export const Div = styled.div``;

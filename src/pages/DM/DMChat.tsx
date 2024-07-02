@@ -14,7 +14,6 @@ import InputBox from "../../components/DM/Chat/InputBox";
 import ChatHeader from "../../components/DM/Chat/ChatHeader";
 import ChatList from "../../components/DM/Chat/ChatList";
 import Text from "../../components/Common/Text";
-
 import { ReactComponent as ArrowIcon } from "../../assets/icons/chevron-down.svg";
 import colors from "../../components/Common/colors";
 
@@ -22,12 +21,11 @@ const DMChat = () => {
   const userInfo = useRecoilValue(userInfoState);
   const navigate = useNavigate();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
+
   const [init, setInit] = useState<boolean>(true);
   const [showModal, setShowModal] = useState<boolean>(false);
-
   const chatterId = Number(useParams().userId);
   const [chatter, setChatter] = useState<UserInfoInterface>();
-
   const [client, changeClient] = useState<StompJs.Client | null>(null);
   const [roomId, setRoomId] = useState<number>();
   const [chatList, setChatList] = useState<ChatMessageInterface[]>([]);
@@ -35,51 +33,44 @@ const DMChat = () => {
 
   const connect = () => {
     if (!userInfo) return;
-    // 소켓 연결
     try {
       const clientdata = new StompJs.Client({
         brokerURL: "ws://localhost:8080/ws",
         debug: function (str) {
           console.log("debug: ", str);
         },
-        reconnectDelay: 5000, // 자동 재 연결
+        reconnectDelay: 5000,
         heartbeatIncoming: 4000,
         heartbeatOutgoing: 4000,
       });
-      // 구독
       clientdata.onConnect = function () {
         clientdata.subscribe("/sub/room/" + roomId, callback);
       };
-      clientdata.activate(); // 클라이언트 활성화
-      changeClient(clientdata); // 클라이언트 갱신
+      clientdata.activate();
+      changeClient(clientdata);
     } catch (err) {
       console.log(err);
     }
   };
 
   const disConnect = () => {
-    // 연결 끊기
     if (client === null) {
       return;
     }
     client.deactivate();
   };
 
-  // 콜백함수 => ChatList 저장하기
   const callback = function (message: StompJs.Message) {
     if (message.body) {
       const parseData = JSON.parse(message.body) as ChatMessageInterface;
       const newMessage = { ...parseData, time: new Date(parseData.time) };
       setChatList((prevChatList) => [...prevChatList, newMessage]);
-      if (parseData.authorId === userInfo?.id) {
-        scrollEnd();
-      }
     }
   };
 
   const fetchChatList = (rId: number) => {
     customAxios
-      .get(`/chat/${rId}`)
+      .post(`/chat/${rId}`)
       .then((res) => res.data.data)
       .then((data: ChatMessageInterface[]) => {
         const updatedData: ChatMessageInterface[] = data.map((chat) => ({
@@ -112,7 +103,6 @@ const DMChat = () => {
 
   const handleChat = () => {
     if (message.length === 0 || !client || !userInfo || !roomId) return;
-    // 메세지 보내기
     const body = {
       userId: userInfo.id,
       roomId,
@@ -127,27 +117,24 @@ const DMChat = () => {
   };
 
   useEffect(() => {
-    // 방이 있어야 연결
     if (!roomId) return;
-    // 최초 렌더링 시 , 웹소켓에 연결
-    // 우리는 사용자가 방에 입장하자마자 연결 시켜주어야 하기 때문에,,
     connect();
     return () => disConnect();
   }, [roomId]);
 
   useEffect(() => {
-    // 먼저 room 가져옴
     if (!chatterId || !userInfo) return;
     fetchRoom();
   }, [userInfo, chatterId]);
 
   useEffect(() => {
     if (chatList.length === 0) return;
-    if (init || chatList[chatList.length - 1].authorId === userInfo?.id) {
-      scrollEnd();
-    } else {
-      setShowModal(true);
-    }
+    scrollEnd();
+    // if (init || chatList[chatList.length - 1].authorId === userInfo?.id) {
+    //   scrollEnd();
+    // } else {
+    //   setShowModal(true);
+    // }
   }, [chatList]);
 
   const scrollEnd = () => {

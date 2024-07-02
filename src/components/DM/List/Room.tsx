@@ -5,6 +5,7 @@ import * as S from "./Room.styles";
 import { ReactComponent as StoreIcon } from "../../../assets/icons/home.svg";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 interface RoomProps {
   room: ChatRoomInterface;
 }
@@ -65,6 +66,16 @@ function Room({ room }: RoomProps) {
       </S.LeftSection>
       <S.RightSection>
         <Text text={time} size="0.8rem" color={colors.white._800} />
+        {room.unReadMessageCount > 0 && (
+          <S.CountBox>
+            <Text
+              text={`${
+                room.unReadMessageCount >= 100 ? "99+" : room.unReadMessageCount
+              }`}
+              color="white"
+            />
+          </S.CountBox>
+        )}
       </S.RightSection>
     </S.Layout>
   );
