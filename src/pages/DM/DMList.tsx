@@ -51,7 +51,6 @@ const DMList = () => {
   const callback = function (message: StompJs.Message) {
     if (message.body) {
       const parseData = JSON.parse(message.body) as ChatRoomInterface;
-      console.log(parseData);
       const newRoom = {
         ...parseData,
         lastMessage: {

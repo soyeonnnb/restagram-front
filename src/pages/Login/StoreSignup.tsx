@@ -50,7 +50,6 @@ function StoreSignup() {
 
   const handleDuplicateEmail = () => {
     let reg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
-    console.log(email);
     if (!reg.test(email)) {
       setCheckEmailText("이메일 형식이 아닙니다.");
       return;

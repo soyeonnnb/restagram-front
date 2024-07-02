@@ -35,10 +35,6 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
     }
   };
 
-  const handleChat = () => {};
-
-  useEffect(() => {}, []);
-
   return (
     <S.Layout>
       <S.Box>
@@ -57,7 +53,7 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
                   <Text text="팔로우" size="0.9rem" pointer={true} />
                 </S.Button>
               )}
-              <S.Button onClick={() => handleChat()}>
+              <S.Button onClick={() => navigate(`/dm/${userInfo.id}`)}>
                 <Text text="DM" size="0.9rem" pointer={true} />
               </S.Button>
             </>

@@ -130,11 +130,6 @@ const DMChat = () => {
   useEffect(() => {
     if (chatList.length === 0) return;
     scrollEnd();
-    // if (init || chatList[chatList.length - 1].authorId === userInfo?.id) {
-    //   scrollEnd();
-    // } else {
-    //   setShowModal(true);
-    // }
   }, [chatList]);
 
   const scrollEnd = () => {

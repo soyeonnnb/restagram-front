@@ -109,7 +109,6 @@ function CouponForm() {
       .catch((e) => {
         if (e.response.data.code === "ERROR-001") {
           const responseList = e.response.data.data;
-          console.log(responseList);
           responseList.forEach((res: { field: string; message: string }) => {
             if (res.field === "startAt") {
               setCheckStartAtText(res.message);

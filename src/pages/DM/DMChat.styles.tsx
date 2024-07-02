@@ -3,6 +3,8 @@ import colors from "../../components/Common/colors";
 
 export const Layout = styled.div`
   position: relative;
+  min-height: 100%;
+  background-color: ${colors.purple._50};
 `;
 
 export const Observer = styled.div``;
