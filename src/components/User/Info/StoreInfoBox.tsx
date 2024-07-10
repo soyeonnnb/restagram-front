@@ -69,7 +69,7 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
             className="icon"
             width={15}
             height={15}
-            fill={colors.beige._600}
+            fill={colors.blue._600}
           />
           <Text text={userInfo.storeName} size="0.9rem" />
         </S.HeaderRow>
@@ -78,7 +78,7 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
             className="icon"
             width={15}
             height={15}
-            fill={colors.beige._600}
+            fill={colors.blue._600}
           />
           <Text text={userInfo.address} size="0.9rem" />
         </S.HeaderRow>
@@ -87,7 +87,7 @@ function StoreInfoBox({ userInfo }: StoreInfoBoxProps) {
             className="icon"
             width={15}
             height={15}
-            fill={colors.beige._600}
+            fill={colors.blue._600}
           />
           <Text text={userInfo.storePhone} size="0.9rem" />
         </S.HeaderRow>

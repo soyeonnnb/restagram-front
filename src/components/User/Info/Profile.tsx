@@ -10,6 +10,12 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import customAxios from "../../../utils/customAxios";
 import { useNavigate } from "react-router-dom";
 
+import { ReactComponent as DoFollowIcon } from "../../../assets/icons/person-add.svg";
+import { ReactComponent as CancelFollowIcon } from "../../../assets/icons/person-remove.svg";
+import { ReactComponent as DMIcon } from "../../../assets/icons/paper-plane.svg";
+
+import colors from "../../Common/colors";
+
 interface ProfileProps {
   userInfo: FeedCustomerInfoInterface | FeedStoreInfoInterface;
   setUserInfo: Dispatch<
@@ -44,18 +50,35 @@ function Profile({ userInfo, setUserInfo }: ProfileProps) {
           {user && user.id !== userInfo.id && (
             <>
               {userInfo.follow && (
-                <S.Button onClick={() => handleFollow(false)}>
-                  <Text text="팔로우 취소" size="0.9rem" pointer={true} />
-                </S.Button>
+                <S.CircleButton
+                  onClick={() => handleFollow(false)}
+                  color={colors.red._200}
+                >
+                  <CancelFollowIcon
+                    width={15}
+                    height={15}
+                    fill={colors.red._300}
+                  />
+                </S.CircleButton>
               )}
               {!userInfo.follow && (
-                <S.Button onClick={() => handleFollow(true)}>
-                  <Text text="팔로우" size="0.9rem" pointer={true} />
-                </S.Button>
+                <S.CircleButton
+                  onClick={() => handleFollow(true)}
+                  color={colors.blue._400}
+                >
+                  <DoFollowIcon
+                    width={15}
+                    height={15}
+                    fill={colors.blue._600}
+                  />
+                </S.CircleButton>
               )}
-              <S.Button onClick={() => navigate(`/dm/${userInfo.id}`)}>
-                <Text text="DM" size="0.9rem" pointer={true} />
-              </S.Button>
+              <S.CircleButton
+                onClick={() => navigate(`/dm/${userInfo.id}`)}
+                color={colors.blue._400}
+              >
+                <DMIcon width={15} height={15} fill={colors.blue._600} />
+              </S.CircleButton>
             </>
           )}
         </S.BoxComponent>

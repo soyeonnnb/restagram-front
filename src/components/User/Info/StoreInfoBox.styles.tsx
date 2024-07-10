@@ -25,8 +25,8 @@ export const BottomBox = styled.div`
 export const Button = styled.div`
   width: 120px;
   margin: 0 20px;
-  background-color: ${colors.purple._100};
-  border: 2px solid ${colors.purple._50};
+  background-color: white;
+  border: 2px solid ${colors.blue._100};
   justify-content: center;
   align-items: center;
   display: flex;
@@ -34,8 +34,7 @@ export const Button = styled.div`
   border-radius: 5px;
   &:hover {
     cursor: pointer;
-    background-color: ${colors.purple._200};
-    border-color: ${colors.purple._100};
+    border-color: ${colors.blue._400};
   }
 `;
 

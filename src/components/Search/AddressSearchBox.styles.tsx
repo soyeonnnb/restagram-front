@@ -9,6 +9,7 @@ export const Layout = styled.div`
   top: 100px;
   display: flex;
   justify-content: center;
+  z-index: 100;
 `;
 export const Main = styled.div`
   width: 440px;

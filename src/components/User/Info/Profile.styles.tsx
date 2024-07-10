@@ -23,30 +23,7 @@ export const BoxComponent = styled.div`
   display: flex;
   justify-content: end;
 `;
-export const Button = styled.div`
-  height: 30px;
-  display: flex;
-  border: 2px solid ${colors.purple._50};
-  background-color: ${colors.purple._100};
-  margin-left: 10px;
-  padding: 0 10px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  &:hover {
-    cursor: pointer;
-    border: 2px solid ${colors.purple._100};
-    background-color: ${colors.purple._200};
-  }
-  & > span {
-    white-space: nowrap;
-  }
-`;
-export const ButtonText = styled.span`
-  white-space: nowrap;
-  font-size: 0.9rem;
-  margin: 0px 10px;
-`;
+
 export const ProfileImage = styled.img`
   width: 80px;
   height: 80px;
@@ -62,3 +39,17 @@ export const Description = styled.span`
   font-size: 0.8rem;
 `;
 export const TextBox = styled.div``;
+export const CircleButton = styled.div<{ color: string }>`
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid ${({ color }) => color};
+  margin-left: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
