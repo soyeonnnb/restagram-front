@@ -2,6 +2,7 @@ import DaumPostCode from "react-daum-postcode";
 import * as S from "./DaumPost.styles";
 import { ReactComponent as XIcon } from "../../assets/icons/circle-x.svg";
 import colors from "../Common/colors";
+import { useEffect } from "react";
 
 interface DaumPostProps {
   handleShowPost: any;
@@ -29,6 +30,7 @@ function DaumPost({ handleShowPost, setBcode, setAddress }: DaumPostProps) {
     setAddress(fullAddress);
     handleShowPost();
   };
+
   return (
     <S.Layout>
       <S.Box>
