@@ -52,10 +52,17 @@ function Setting() {
           <S.RowText>내 정보 수정</S.RowText>
         </S.Row>
         <S.Divider />
-        {/* <S.Row className="hover">
-          <S.RowText>비밀번호 수정</S.RowText>
-        </S.Row>
-        <S.Divider /> */}
+        {userInfo?.type === "STORE" && (
+          <>
+            <S.Row
+              className="hover"
+              onClick={() => navigate("/store/update/password")}
+            >
+              <S.RowText>비밀번호 수정</S.RowText>
+            </S.Row>
+            <S.Divider />
+          </>
+        )}
         {userInfo?.type === "CUSTOMER" && (
           <>
             <S.Row>

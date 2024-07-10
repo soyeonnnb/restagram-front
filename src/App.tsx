@@ -28,6 +28,7 @@ import DMChat from "./pages/DM/DMChat";
 import UpdateStoreInfo from "./pages/Store/UpdateStoreInfo";
 import UpdateCustomerInfo from "./pages/Customer/UpdateCustomerInfo";
 import UpdateNickname from "./pages/User/UpdateNickname";
+import UpdatePassword from "./pages/User/UpdatePassword";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="coupon" element={<CouponList />} />
             <Route path="coupon/form" element={<CouponForm />} />
             <Route path="update/info" element={<UpdateStoreInfo />} />
+            <Route path="update/password" element={<UpdatePassword />} />
           </Route>
           <Route element={<CustomerRoute />}>
             <Route path="/" element={<FeedList />} />
