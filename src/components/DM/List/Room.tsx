@@ -21,7 +21,7 @@ function Room({ room }: RoomProps) {
       now.getMonth() === room.lastMessage.time.getMonth() &&
       now.getDate() === room.lastMessage.time.getDate();
     let str = "";
-    if (!same) {
+    if (same) {
       str = `${room.lastMessage.time.getHours()}:`;
       if (room.lastMessage.time.getMinutes() > 0)
         str += `${room.lastMessage.time.getMinutes()}`;

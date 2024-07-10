@@ -33,16 +33,26 @@ function Setting() {
       });
   };
 
+  const handleNavigateUpdateInfo = () => {
+    if (!userInfo) return;
+    if (userInfo.type === "CUSTOMER") {
+      navigate("/update/info");
+    }
+    if (userInfo.type === "STORE") {
+      navigate("/store/update/info");
+    }
+  };
+
   return (
     <S.Layout>
       <Title title="Setting" />
       <S.UserInfo></S.UserInfo>
       <S.List>
-        {/* <S.Row className="hover">
+        <S.Row className="hover" onClick={() => handleNavigateUpdateInfo()}>
           <S.RowText>내 정보 수정</S.RowText>
         </S.Row>
         <S.Divider />
-        <S.Row className="hover">
+        {/* <S.Row className="hover">
           <S.RowText>비밀번호 수정</S.RowText>
         </S.Row>
         <S.Divider /> */}

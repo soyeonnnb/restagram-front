@@ -25,6 +25,9 @@ import UserFeedList from "./pages/Feed/UserFeedList";
 import CouponForm from "./pages/Store/CouponForm";
 import DMList from "./pages/DM/DMList";
 import DMChat from "./pages/DM/DMChat";
+import UpdateStoreInfo from "./pages/Store/UpdateStoreInfo";
+import UpdateCustomerInfo from "./pages/Customer/UpdateCustomerInfo";
+import UpdateNickname from "./pages/User/UpdateNickname";
 
 function App() {
   return (
@@ -37,6 +40,7 @@ function App() {
             <Route path="reservation/form/add" element={<ReservationForm />} />
             <Route path="coupon" element={<CouponList />} />
             <Route path="coupon/form" element={<CouponForm />} />
+            <Route path="update/info" element={<UpdateStoreInfo />} />
           </Route>
           <Route element={<CustomerRoute />}>
             <Route path="/" element={<FeedList />} />
@@ -47,6 +51,7 @@ function App() {
               path="reservation/:storeId"
               element={<CustomerReservationForm />}
             />
+            <Route path="update/info" element={<UpdateCustomerInfo />} />
           </Route>
           <Route path="dm" element={<DMList />} />
           <Route path="dm/:userId" element={<DMChat />} />
@@ -55,6 +60,7 @@ function App() {
           <Route path="feed/:userId" element={<UserFeed />} />
           <Route path="notification" element={<Notification />} />
           <Route path="setting" element={<Setting />} />
+          <Route path="update/nickname" element={<UpdateNickname />} />
         </Route>
         <Route element={<PublicRoute />}>
           <Route path="login" element={<CustomerLogin />} />

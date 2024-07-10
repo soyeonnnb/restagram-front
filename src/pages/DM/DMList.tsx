@@ -22,7 +22,7 @@ const DMList = () => {
       const clientdata = new StompJs.Client({
         brokerURL: "ws://localhost:8080/ws",
         debug: function (str) {
-          console.log("debug: ", str);
+          // console.log("debug: ", str);
         },
         reconnectDelay: 5000, // 자동 재 연결
         heartbeatIncoming: 4000,
